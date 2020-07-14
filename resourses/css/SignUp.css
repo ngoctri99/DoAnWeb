@@ -38,42 +38,6 @@ input.ggg {
     text-align: center;
 }
 
-.w3layouts-main span {
-    font-size: 16px;
-    color: #fff;
-    float: left;
-    width: 32%;
-    margin-top: 8px;
-}
-
-.w3layouts-main h6 {
-    font-size: 16px;
-    float: right;
-    width: 37%;
-    color: #fff;
-    letter-spacing: 1px;
-    margin-top: 8px;
-    text-decoration: underline;
-}
-
-.w3layouts-main a {
-    color: #fff;
-    transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-}
-
-.w3layouts-main a:hover {
-    color: #f0bcb4;
-    transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-}
-
 .w3layouts-main input[type="submit"] {
     padding: 12px 38px;
     font-size: 18px;
@@ -100,33 +64,4 @@ input.ggg {
     -o-transition: 0.5s all;
     -moz-transition: 0.5s all;
     -ms-transition: 0.5s all;
-}
-
-.w3layouts-main p a {
-    color: #f0bcb4;
-    padding: 10px;
-}
-
-.w3layouts-main p a:hover {
-    color: #fff;
-}
-
-.w3layouts-main p {
-    font-size: 17px;
-    color: #fff;
-    text-align: center;
-}
-
-
-/*--//login--*/
-
-h4 input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-.w3layouts-main h4 {
-    margin-right: 10px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 14px;
 }
