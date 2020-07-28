@@ -1,48 +1,17 @@
-<div class="banner">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-7">
-              <div class="banner-left">
-                <a href="#"
-                  ><img src="/images/IMG_20200615_185215.jpg" alt=""
-                /></a>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="banner-right">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="bn-right-cnt">
-                      <a href="#"
-                        ><img
-                          src="/images/IMG_20200615_185215.jpg"
-                          alt=""
-                      /></a>
-                    </div>
-                  </div>
+ <div class="banner">
+            <div class="slideshow-container">
+                {{#each this.page.posts_hot}}
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="{{post_image}}" />
+                    <div class="text">{{post_name}}</div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="bn-right-cnt-bottom-left">
-                      <a href="#"
-                        ><img
-                          src="/images/IMG_20200615_185215.jpg"
-                          alt=""
-                      /></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="bn-right-cnt-bottom-right">
-                      <a href="#"
-                        ><img
-                          src="/images/IMG_20200615_185215.jpg"
-                          alt=""
-                      /></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                {{/each}}
             </div>
-          </div>
-        </div>
-      </div>
+
+            <div style="text-align: center;">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+</div>

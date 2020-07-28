@@ -1,203 +1,98 @@
- <div class="content">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="main-cnt">
+    {{!-- banner --}}
+    {{> banner}}
+        <div class="content">
+            <div class="container">
                 <div class="row">
-                  <div class="col-md-12">
-                    <div class="menu-cnt">
-                      <div class="main-menu-cnt">
-                        <h4 class="main-menu-cnt-title">
-                          New Post
-                        </h4>
-                      </div>
-                      <ul class="sub-menu-cnt">
-                        <li><a href="">Post 1</a></li>
-                        <li><a href="">Post 2</a></li>
-                        <li><a href="">Post 3</a></li>
-                        <li><a href="">Post 4</a></li>
-                      </ul>
+                    <div class="col-md-8">
+                        <div class="main-cnt">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="menu-cnt">
+                                        <div class="main-menu-cnt">
+                                            <h4 class="main-menu-cnt-title">
+                                                New Post
+                                            </h4>
+                                        </div>
+                                        {{!-- {{#each this.page.count_item}}
+                                        {{#if (page.count_items.length > 0) }} 
+                                            <ul class="pagination text-center">
+                                            {{#if (page.pageCurrent == 1)}}
+                                            <li class="disabled"><a>First</a></li>
+                                            {{#else}}
+                                            <li><a >First</a></li>
+                                            {{/if}}
+                                            </ul>
+                                        {{/if}}
+                                        {{/each}} --}}
+                                        <ul class="sub-menu-cnt">
+                                            <li><a href="/index?page={{this.page.first}}">First</a></li>
+                                            <li><a href="/index?page={{this.page.previous}}">Previous</a></li>
+                                            {{#each this.page.count_items}}
+                                                <li><a href="/index?page={{id}}">page {{id}}</a></li>
+                                            {{/each}}
+                                            <li><a href="/index?page={{this.page.next}}">Next</a></li>
+                                            <li><a href="/index?page={{this.page.last}}">Last</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post">
+                                {{#each this.page.posts}}
+                                    <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="img">
+                                            <a href="/post/post={{post_id}}"><img src="{{post_image}}" alt=" " /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="decs">
+                                            <a href="/post/post={{post_id}}">
+                                                <p>
+                                                    {{post_name}}
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                                
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    <div class="col-md-4">
+                        <div class="hig">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="name-hig">
+                                        <h4>Tin nổi bật</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-hig">
+                                {{#each this.page.posts_hot}}
+                                <div class="row posthig">
+                                    <div class="col-md-5">
+                                        <div class="img">
+                                            <a href="/post/post={{post_id}}"><img src="{{post_image}}" alt=" " /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="decs">
+                                            <a href="/post/post={{post_id}}">
+                                                <p>
+                                                    {{post_name}}
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="post">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="">
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Cum mollitia, distinctio illo cupiditate
-                            reiciendis placeat doloremque nihil optio excepturi
-                            tempore nostrum eaque libero totam quidem nemo
-                            voluptate vero. Praesentium, voluptas!
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="">
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Cum mollitia, distinctio illo cupiditate
-                            reiciendis placeat doloremque nihil optio excepturi
-                            tempore nostrum eaque libero totam quidem nemo
-                            voluptate vero. Praesentium, voluptas!
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="">
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Cum mollitia, distinctio illo cupiditate
-                            reiciendis placeat doloremque nihil optio excepturi
-                            tempore nostrum eaque libero totam quidem nemo
-                            voluptate vero. Praesentium, voluptas!
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div class="col-md-4">
-              <div class="hig">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="name-hig">
-                      <h4>Tin nổi bật</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-hig">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="#">
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Repellat, tempora?
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="#">
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Repellat, tempora?
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="#">
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Repellat, tempora?
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="#">
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Repellat, tempora?
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+
+
+   

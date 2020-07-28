@@ -1,0 +1,67 @@
+html,
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 100%;
+    overflow-x: hidden;
+    background: url(/public/images/bg.jpg) no-repeat 0px 0px;
+    background-size: cover;
+}
+
+body a {
+    transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+    text-decoration: none;
+}
+
+input.ggg {
+    width: 100%;
+    padding: 15px 0px 15px 15px;
+    border: 1px solid #fff;
+    outline: none;
+    font-size: 14px;
+    color: #fff;
+    margin: 14px 0px;
+    background: none;
+}
+
+.w3layouts-main {
+    width: 30%;
+    margin: 5em auto;
+    background: rgba(171, 119, 157, 0.27);
+    padding: 42px 35px;
+}
+
+.w3layouts-main h2 {
+    text-align: center;
+}
+
+.w3layouts-main input[type="submit"] {
+    padding: 12px 38px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #f0bcb4;
+    color: white;
+    border: none;
+    outline: none;
+    display: table;
+    cursor: pointer;
+    margin: 45px auto 31px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.w3layouts-main input[type="submit"]:hover {
+    background: #8b5c7e;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
