@@ -33,6 +33,7 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/post', postsRouter);
 app.use('/account', accountRouter);
+app.use('/pdf', pdfRouter);
 
 
 
