@@ -24,5 +24,17 @@ module.exports = {
         resolve(results);
       });
     });
-  }
+  },
+  patch: function (table, entity, condition) {
+    return new Promise(function (resolve, reject) {
+      const sql = `update ${table} set ? where ?`;
+      pool.query(sql, [entity, condition], function (error, results) {
+        if (error) {
+          return reject(error);
+        }
+
+        resolve(results);
+      });
+    });
+  },
 };
