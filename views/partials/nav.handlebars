@@ -1,51 +1,55 @@
 <div class="header">
-            <div class="container" id="header">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="logo">
-                            <a href="#">LOGO</a>
-                        </div>
-                    </div>
+    <div class="container" id="header">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logo">
+                    <a href="#">LOGO</a>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="menu">
-                            <ul class="main-menu">
-                                <li><a href="/">Home</a></li>
-                                <li>
-                                    <a href="">product</a>
-                                    <ul class="sub-menu">
-                                        {{#each this.page.categories}}
-                                            <li><a href="#">{{category_name}}</a></li><br>
-                                        {{/each}}
-                                    </ul>
-                                </li>
-                                <li><a href="">contact</a></li>
-                                <li><a href="">sevices</a></li>
-                                <li><a href="">about</a></li>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="menu">
+                    <ul class="main-menu">
+                        <li><a href="/">Home</a></li>
+                        <li>
+                            <a href="">product</a>
+                            <ul class="sub-menu">
+                                {{#each this.page.categories}}
+                                <li><a href="#">{{category_name}}</a></li><br>
+                                {{/each}}
                             </ul>
-                        </div>
+                        </li>
+                        <li><a href="">contact</a></li>
+                        <li><a href="">sevices</a></li>
+                        <li><a href="">about</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search-login">
+                    <div class="search">
+                        <input type="text" name="search" placeholder="search..." />
+                        <button class="btn-search" name="btn-search">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                    <div class="col-md-6">
-                        <div class="search-login">
-                            <div class="search">
-                                <input type="text" name="search" placeholder="search..." />
-                                <button class="btn-search" name="btn-search">
-                    <i class="fas fa-search"></i>
-                  </button>
-                            </div>
-                            <div class="login">
-                                <ul>
-                                    <li><a href="../account">Login</a></li>
-                                    <li><a href="../account/register">Register</a></li>
-                                </ul>
-                            </div>
-                            <div class="logo-user">
-                                <a href="#"><img src="public/images/IMG_20200615_185215.jpg" alt="" /></a>
-                            </div>
-                        </div>
+                    <div class="login">
+                        <ul>
+                            {{#if lcIsAuthenticated}}
+                            <li><a href="">{{lcAuthUser.account_name}}</a></li>
+                            {{else}}
+                            <li><a href="../account">Login</a></li>
+                            <li><a href="../account/register">Register</a></li>
+                            {{/if}}
+                        </ul>
+                    </div>
+                    <div class="logo-user">
+                        <a href="#"><img src="public/images/IMG_20200615_185215.jpg" alt="" /></a>
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
+
+</div>
