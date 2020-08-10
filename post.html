@@ -1,260 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POST</title>
-    <link rel="stylesheet" href="./vendor/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./resourses/css/style.css" />
-    <link rel="stylesheet" href="./resourses/css/post.css" />
-  </head>
-  <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng bài viết</title>
+    <link rel="stylesheet" href="./vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./vendor/css/all.min.css">
+    <link rel="stylesheet" href="./resourses/css/style.css">
+    <link rel="stylesheet" href="./resourses/css/POST.css">
+</head>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<body>
     <div class="wrapper">
-      <div class="header">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="logo">
-                <h2>logo</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-7">
-              <div class="menu">
-                <ul class="main-menu">
-                  <li><a href="">Home</a></li>
-                  <li>
-                    <a href="">product</a>
-                    <ul class="sub-menu">
-                      <li><a href="#">product1</a></li>
-                      <li><a href="">product2</a></li>
-                      <li><a href="">product3</a></li>
-                      <li><a href="">product4</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="">contact</a></li>
-                  <li><a href="">sevices</a></li>
-                  <li><a href="">about</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="search-login">
-                <div class="search">
-                  <input type="text" name="search" placeholder="search..." />
-                  <button class="btn btn-primary" name="btn-search">
-                    Search
+        <div class="header">
+            <div class="container" id="header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="#">LOGO</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="menu">
+                            <ul class="main-menu">
+                                <li><a href="./index.html">Trang chủ</a></li>
+                                <li>
+                                    <a href="">Chuyên mục</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="#">product1</a></li>
+                                        <li>
+                                            <a href="">product2</a>
+
+                                            <ul class="sub-menu-2">
+                                                <li><a href="#">sub-menu2.1</a></li>
+                                                <li><a href="">sub-menu2.2</a></li>
+                                                <li><a href="">sub-menu2.3</a></li>
+                                                <li><a href="">sub-menu2.4</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="">product3</a>
+                                            <ul class="sub-menu-2">
+                                                <li><a href="#">sub-menu3.1</a></li>
+                                                <li><a href="">sub-menu3.2</a></li>
+                                                <li><a href="">sub-menu3.3</a></li>
+                                                <li><a href="">sub-menu3.4</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="">product4</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="">contact</a></li>
+                                <li><a href="">sevices</a></li>
+                                <li><a href="">about</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search-login">
+                            <div class="search">
+                                <input type="text" name="search" placeholder="search..." />
+                                <button class="btn-search" name="btn-search">
+                    <i class="fas fa-search"></i>
                   </button>
-                </div>
-                <div class="login">
-                  <a href="" name="login">Login</a>
-                  <a href="" name="resgiter">Resgiter</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="banner">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-7">
-              <div class="banner-left">
-                <a href="#"
-                  ><img src="./public/images/IMG_20200615_185215.jpg" alt=""
-                /></a>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="banner-right">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="bn-right-cnt">
-                      <a href="#"
-                        ><img
-                          src="./public/images/IMG_20200615_185215.jpg"
-                          alt=""
-                      /></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="bn-right-cnt-bottom-left">
-                      <a href="#"
-                        ><img
-                          src="./public/images/IMG_20200615_185215.jpg"
-                          alt=""
-                      /></a>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="bn-right-cnt-bottom-right">
-                      <a href="#"
-                        ><img
-                          src="./public/images/IMG_20200615_185215.jpg"
-                          alt=""
-                      /></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="main-post">
-                <h2>Tiêu đề bài viết</h2>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="main-content"></div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="img-content"></div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="tag-content">
-                      <a href="">từ khóa</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="relate-post">
-                      <h3>Bài viết liên quan</h3>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="img-relate"></div>
-                          <div class="content-relate">
-                            <a href="">tiêu đề bài viết liên quan</a>
-                          </div>
+                            </div>
+
+                            <div class="logo-user">
+                                <a href="#"><img src="./public/images/IMG_20200615_185215.jpg" alt="" /></a>
+                                <ul class="sub-logo">
+                                    <li><a href="./inf_account_ reporter.html">Hồ Sơ</a></li>
+                                    <li><a href="#">Mua tài khoản vip</a></li>
+                                    <li><a href="">Đăng bài</a></li>
+                                    <li><a href="#" style="color: red;">Đăng xuất</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="img-relate"></div>
-                          <div class="content-relate">
-                            <a href="">tiêu đề bài viết liên quan</a>
-                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-nav">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="icon-menu" onclick="changeicon(this)">
+                                <div class="bar1"></div>
+                                <div class="bar2"></div>
+                                <div class="bar3"></div>
+
+                                <ul class="main-menu-560px" id="main-menu">
+                                    <li><a href=" # ">Home</a></li>
+                                    <li>
+                                        <a href="# ">Product</a>
+
+                                        <ul class="sub-menu-560px">
+                                            <li><a href="# ">product1</a></li>
+                                            <li><a href="# ">product2</a></li>
+                                            <li><a href="# ">product3</a></li>
+                                            <li><a href="# ">product4</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="# ">Contact</a></li>
+                                    <li><a href="# ">Services</a></li>
+                                    <li><a href="# ">About</a></li>
+                                </ul>
+                            </div>
                         </div>
-                      </div>
+                        <div class="col-7">
+                            <div class="search-login-user-560px">
+                                <input type="text " name="search " placeholder="search... " />
+                                <button class="btn-search" name="btn-search ">
+                    <i class="fas fa-search"></i>
+                  </button>
+                                <div class="logo-user-560px">
+                                    <span><i class="fas fa-user-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <div class="col-md-4">
-              <div class="hig">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="name-hig">
-                      <h4>Tin nổi bật</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-hig">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="./public/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="#">
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Repellat, tempora?
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="./public/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="#">
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Repellat, tempora?
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="./public/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="#">
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Repellat, tempora?
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="img">
-                        <a href="#"
-                          ><img
-                            src="./public/images/IMG_20200615_185215.jpg"
-                            alt=""
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="decs">
-                        <a href="#">
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Repellat, tempora?
-                          </p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="footer"></div>
-      </div>
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <script>
+                        tinymce.init({
+                            selector: '#mytextarea'
+                        });
+                    </script>
+                    <h1>Đăng Bài Viết</h1>
+                </div>
+
+                <form class="POST" method="post">
+                    <textarea id="mytextarea" style="min-height: 500px; ">Hello, World!</textarea>
+                </form>
+                <div class="btnPOST">
+                    <button class="btn btn-primary" type="submit">Đăng Bài</button>
+                    <button class="btn btn-danger" type="submit">Thoát</button>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-    <script src="./vendor/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="./vendor/js/popper.min.js"></script>
-    <script src="./vendor/js/bootstrap.min.js"></script>
-  </body>
+
+
+    <script src="./vendor/js/jquery-3.5.1.slim.min.js "></script>
+    <script src="./vendor/js/popper.min.js "></script>
+    <script src="./vendor/js/bootstrap.min.js "></script>
+    <script src="./vendor/js/all.min.js "></script>
+    <script src="./resourses/js/click.js "></script>
+</body>
+
 </html>
