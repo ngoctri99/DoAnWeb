@@ -10,7 +10,7 @@ module.exports = {
       sql = "select * from posts ";
       //get one post
       if(post_id != 0) {
-        sql += " where post_status = 1 and post_id = " + post_id;
+        sql += " where post_status = 1 and post_id =  "+ post_id;
         return sql;
       }
       sql+= " where post_status = 1 ";

@@ -37,14 +37,9 @@ module.exports = {
       if (!err)
       {
         await postsModels.add(entity);
-        console.log('vao duoc');
-        //res.send('err');
-        //res.redirect('up');
       }
       else res.send('err');
     })
-
-    //res.redirect('up');
   },
 
 

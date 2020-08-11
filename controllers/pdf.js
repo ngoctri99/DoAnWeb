@@ -30,7 +30,7 @@ module.exports = {
                 users: decs
             },
             //path: "../../DoAnWeb V1/DoAnWeb-backend/public/pdf/output.pdf"
-            path: "filePdf/output.pdf"
+            path: "filePdf/1.pdf"
         }
 
         pdf.create(document, options)
@@ -43,5 +43,9 @@ module.exports = {
         });
 
         res.redirect('index');
+    },
+    dowload: function(req, res){
+        var file = 'C:/Users/Truong/Documents/GitHub/DoAnWeb/' + '/filepdf/1.pdf';
+        res.download(file);
     }
 }

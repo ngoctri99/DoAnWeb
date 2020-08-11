@@ -64,6 +64,14 @@ module.exports = {
     registration: async function(req, res){
         const entity = {
             account_id: 1,
+            account_status: 2,
+        };
+
+          await vipModels.patch(entity);
+    },
+    updatehethang: async function(req, res){
+        const entity = {
+            account_id: 1,
             account_status: 3,
         };
 
