@@ -13,17 +13,7 @@
                                                 New Post
                                             </h4>
                                         </div>
-                                        {{!-- {{#each this.page.count_item}}
-                                        {{#if (page.count_items.length > 0) }} 
-                                            <ul class="pagination text-center">
-                                            {{#if (page.pageCurrent == 1)}}
-                                            <li class="disabled"><a>First</a></li>
-                                            {{#else}}
-                                            <li><a >First</a></li>
-                                            {{/if}}
-                                            </ul>
-                                        {{/if}}
-                                        {{/each}} --}}
+
                                         <ul class="sub-menu-cnt">
                                             <li><a href="/index?page={{this.page.first}}">First</a></li>
                                             <li><a href="/index?page={{this.page.previous}}">Previous</a></li>
@@ -55,6 +45,7 @@
                                     </div>
                                 </div>
                                 {{/each}}
+                                
                             </div>
                         </div>
                     </div>
@@ -72,7 +63,7 @@
                                 <div class="row posthig">
                                     <div class="col-md-5">
                                         <div class="img">
-                                            <a href="/post/post={{post_id}}"><img src="images/{{post_image}}" alt=" " /></a>
+                                            <a href="/post/post={{post_id}}"><img src="{{post_image}}" alt=" " /></a>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
