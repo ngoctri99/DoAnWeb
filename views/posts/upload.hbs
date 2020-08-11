@@ -12,20 +12,10 @@
         ]
       });
     </script>
-    <script>
-        $('#fullimg').fileinput({
-            theme: 'fa',
-            showCaption: true,
-            dropZoneEnabled: true,
-            allowedFileExtensions: ['png', 'jpg', 'gif'],
-            language: 'vi'
-        });
-    </script>
-
 
 
 <h1>Đăng bài viết</h1>
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" >
     <div>
         <h3>Tiêu đề bài viết</h3>
         <input type="text" name="txtTieude" id="txtTieude" value="Tiêu Đề">
@@ -42,17 +32,15 @@
         {{/each}}
         </select>
     </div>
-    <div class="file-loading">
-        <h3>Hình đại diện bài viết</h3>
-        <input id="fullimg" name="fullimg" type="file" >
-    </div>
-    <div class="card">
+
+    <div class="card" >
         <div class="card-body">
             <label for="fulldes"></label>
             <textarea name="fulldes" id="fulldes" class="form-control"></textarea>
         </div>
     </div>
-    <div class="card-footer">
-        <button type="submit">Đăng bài viết</button>
-    </div>
+    <button type="submit" class="btn btn-lg btn-success btn-block">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Submit
+      </button>
 </form>

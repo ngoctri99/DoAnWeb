@@ -26,6 +26,7 @@ module.exports.index = async function(req, res, next) {
     }
 
     page.posts = list_posts.slice(start,end);
+
     page.last = count;
     page.first = 1;
     page.previous = (page.pageCurrent==1)?1:page.pageCurrent--;

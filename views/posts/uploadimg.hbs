@@ -1,0 +1,23 @@
+<script>
+        $('#fullimg').fileinput({
+            theme: 'fa',
+            showCaption: true,
+            dropZoneEnabled: true,
+            allowedFileExtensions: ['png', 'jpg', 'gif'],
+            language: 'vi'
+        });
+</script>
+
+
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="file-loading">
+            <h3>Hình đại diện bài viết</h3>
+            <input id="fullimg" name="fullimg" type="file">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-lg btn-success btn-block">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Submit
+      </button>
+</form>

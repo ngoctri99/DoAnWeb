@@ -41,5 +41,10 @@ module.exports = {
     categori: function()
     {
       return db.load(`select * from categories where category_status = 1`);
+    },
+
+    upload: function(entity1, entity2)
+    {
+      return db.load(`update ${TBL_POSTS} set post_image = '${entity1}' where post_slug = '${entity2}'`)
     }
   };
