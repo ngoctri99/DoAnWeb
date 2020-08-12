@@ -37,7 +37,7 @@
                     <div class="login">
                         <ul>
                             {{#if lcIsAuthenticated}}
-                            <li><a href="">{{lcAuthUser.account_name}}</a></li>
+                            <li><a href="/account/info={{lcAuthUser.account_id}}">{{lcAuthUser.account_name}}</a></li>
                             {{else}}
                             <li><a href="../account">Login</a></li>
                             <li><a href="../account/register">Register</a></li>

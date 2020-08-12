@@ -27,6 +27,9 @@ hbs.registerPartials(__dirname + '/views/partials', function(err) {});
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static('public'));
+app.use(express.static('vendor'));
+app.use(express.static('resourses'));
+
 
 app.use(logger('dev'));
 app.use(express.json());

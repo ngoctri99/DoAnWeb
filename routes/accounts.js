@@ -11,4 +11,9 @@ router.post('/', accountController.login);
 router.get('/register', accountController.registerIndex);
 router.post('/register', accountController.register);
 
+// chua lam
+router.get('/info=:id', accountController.infoindex);
+
+router.get('/logout', accountController.logout);
+
 module.exports = router;

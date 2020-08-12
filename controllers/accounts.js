@@ -4,7 +4,14 @@ const restrict = require('../middlewares/auth.mdw');
 
 module.exports = {
     loginIndex: function(req, res, next) {
-        res.render('account/login');
+
+        if(!req.session.isAuthenticated)
+        {
+            res.render('account/login')
+        }
+        else{
+            res.redirect('index');
+        }
     },
     login: async function(req, res, next) {
         var entity = {
@@ -13,7 +20,7 @@ module.exports = {
         };
         var result = await account.getAccount(req.body.Email, req.body.Password);
         if (result.length == 0) {
-            res.redirectresult('/account');
+            res.redirect('/account');
         } else {
             req.session.isAuthenticated = true;
             req.session.authUser = result[0];
@@ -48,5 +55,24 @@ module.exports = {
         }
         var result = await account.add(entity);
         res.redirect('../index');
-    }
+    },
+
+    infoindex:async function(req, res)
+    {
+
+        if(!req.session.isAuthenticated)
+        {
+            res.redirect('/account');
+        }
+        else{
+            res.render('account/info');
+        }
+    },
+    logout: function (req, res) {
+
+        req.session.isAuthenticated = false;
+        req.session.authUser = null;
+        res.redirect('/index');
+    },
+    
 };
