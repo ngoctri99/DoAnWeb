@@ -1,0 +1,53 @@
+
+
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="menu-inf-user">
+                            <div class="row">
+                                <div class="logo-inf">
+                                    <a href="#"><img src="./public/images/g7.jpg" alt="" /></a>
+                                    <a href="inf_account.html" style="margin: 5px 120px; text-decoration: none;"> vip</a
+                    >
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                <ul class="menu-inf">
+                    <li>
+                        <a href="/account/info={{lcAuthUser.account_id}}">Thông tin</a>
+                    </li>
+                    <li>
+                        <a href="./post_account_reporter.html">Bài viết</a>
+                    </li>
+                    <li>
+                        <a href="/vip/kt">Thông tin VIP</a>
+                    </li>
+                    <li>
+                        <a href="logout" style="color: red;">Đăng xuất</a>
+                    </li>
+                </ul>
+                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+
+                            {{#if this.result}}
+                            <div class="main-inf">
+                                <h2>Thời gian còn lại của VIP</h2>
+
+                                <h1>{{this.hour}}H:{{this.minute}}P:{{second}}S</h1>
+                            </div>
+                            {{else}}
+                            <form action="">
+                                <h2>Đăng kí tài khoản vip</h2>
+                            </form>
+                            {{/if}}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+

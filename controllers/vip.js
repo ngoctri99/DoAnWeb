@@ -80,10 +80,19 @@ module.exports = {
     kiemtrangayhethang: async function(req, res)
     {
         var date = new Date();
-        const result = await vipModels.single();
+        const result = await vipModels.single(req.session.authUser.account_id);
 
-        console.log(result[0].hour);
-        console.log(result[0].minute);
-        console.log(result[0].second);
+        if (result[0]== null){
+            res.render('vip/indexvip', { result: 0});
+        }
+        else {
+            if(result[0].hour >= 0)
+            {
+                res.render('vip/indexvip', { result: 1 ,hour: result[0].hour, minute: result[0].minute, second: result[0].second})
+            }
+            else{
+                res.render('vip/indexvip', { result: 0});
+            }
+        }
     }
 };

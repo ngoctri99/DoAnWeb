@@ -4,7 +4,14 @@ const restrict = require('../middlewares/auth.mdw');
 
 module.exports = {
     loginIndex: function(req, res, next) {
-        res.render('account/login');
+
+        if(!req.session.isAuthenticated)
+        {
+            res.render('account/login')
+        }
+        else{
+            res.redirect('index');
+        }
     },
     login: async function(req, res, next) {
         var entity = {
@@ -13,7 +20,7 @@ module.exports = {
         };
         var result = await account.getAccount(req.body.Email, req.body.Password);
         if (result.length == 0) {
-            res.redirectresult('/account');
+            res.redirect('/account');
         } else {
             req.session.isAuthenticated = true;
             req.session.authUser = result[0];
@@ -30,7 +37,6 @@ module.exports = {
         var entity = {
             account_email: req.body.Email,
             account_name: req.body.UserName,
-            account_fullName: req.body.FullName,
             account_password: req.body.Password,
             account_phone: req.body.Telephone,
             account_level: 1,
@@ -47,6 +53,35 @@ module.exports = {
             res.redirect('register');
         }
         var result = await account.add(entity);
+
+        var kq =  await account.getIdacccount(entity.account_email);
+
+        console.log(kq[0].account_id);
+
+        var d= {
+            account_id: kq[0].account_id,
+            account_status: 3,
+        };
+        await account.addvip(d);
+
         res.redirect('../index');
-    }
+    },
+
+    infoindex:async function(req, res)
+    {
+
+        if(!req.session.isAuthenticated)
+        {
+            res.redirect('/account');
+        }
+        else{
+            res.render('account/info');
+        }
+    },
+    logout: function (req, res) {
+
+        req.session.isAuthenticated = false;
+        req.session.authUser = null;
+        res.redirect('/index');
+    },
 };

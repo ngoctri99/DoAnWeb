@@ -11,9 +11,9 @@ module.exports = {
         delete entity.account_id;
         return db.patch(TBL_CATEGORIES, entity, condition);
     },
-    single: function()
+    single: function(entity)
     {
         return db.load(`select hour(TIMEDIFF(account_date, NOW())) as hour, minute(TIMEDIFF(account_date, NOW())) as minute, second(TIMEDIFF(account_date, NOW())) as second
-        from vip_registration where account_id = 1`);
+        from vip_registration where account_id = ${entity}`);
     }
 };

@@ -22,3 +22,32 @@ function showSlides() {
     dots[slideIndex - 1].className += " active";
     setTimeout(showSlides, 3000); // Change image every 2 seconds
 }
+
+// function showedit() {
+//     var x = document.getElementById("ttchinh");
+//     var y = document.getElementById("chinhsua");
+//     if (x.style.display === "none" || y.style.display === "block") {
+//         x.style.display = "block";
+//         y.style.display = "none";
+//     } else {
+//         x.style.display = "none";
+//         y.style.display = "block";
+//     }
+// }
+
+function showedit() {
+    document.getElementById("ttchinh").style.display = "none";
+    document.getElementById("chinhsua").style.display = "block";
+}
+
+function close() {
+    document.getElementById("ttchinh").style.display = "block";
+    document.getElementById("chinhsua").style.display = "none";
+}
+$(document).ready(function() {
+    $(".logo-user").click(function() {
+        $(".sub-logo").addClass("show");
+
+    })
+})
+
