@@ -26,16 +26,11 @@ module.exports = {
     const entity={
       post_decs: req.body.fulldes,
       post_name: req.body.txtTieude,
+      post_tag: req.body.txtTag,
       post_meta: req.body.txtTomtat,
       post_cate: req.body.txtChuyenmuc,
       post_slug: slug(req.body.txtTieude),
     };
-
-    console.log(req.body.fulldes);
-    console.log(req.body.txtTieude);
-    console.log(req.body.txtTomtat);
-    console.log(req.body.txtChuyenmuc);
-    console.log(slug(req.body.txtTieude));
 
     await postsModels.add(entity);
 

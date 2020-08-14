@@ -75,7 +75,12 @@ module.exports = {
             res.redirect('/account');
         }
         else{
-            res.render('account/info');
+            if(req.session.authUser.account_id == 3){
+                res.render('account/info', {account_level: 1});
+            }
+            else{
+                res.render('account/info', {account_level: 0});
+            }
         }
     },
     logout: function (req, res) {
