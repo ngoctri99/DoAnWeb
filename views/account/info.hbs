@@ -67,13 +67,25 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Address</td>
+                                            <td>
+                                                <label for="">{{lcAuthUser.account_address}}</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>
+                                                <label for="">{{lcAuthUser.account_phone}}</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Ngày Sinh</td>
                                             <td>
                                                 <label for="">{{lcAuthUser.account_birthday}}</label>
                                             </td>
                                         </tr>
                                     </table>
-                                    <form action="#" class="inf" id="chinhsua">
+                                    <form method="POST" class="inf" id="chinhsua">
                                         <table class="edit-inf-form">
                                             <tr>
                                                 <th>Thông tin</th>
@@ -86,9 +98,15 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Email</td>
+                                                <td>Address</td>
                                                 <td>
-                                                    <input type="email" name="Email" id="Email" value="" />
+                                                    <input type="text" name="address" id="address" value="" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone</td>
+                                                <td>
+                                                    <input type="number" name="phone" id="phone" value="" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -97,20 +115,14 @@
                                                     <input type="date" name="ngaysinh" id="ngaysinh" value="" />
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Mật Khẩu</td>
-                                                <td>
-                                                    <input type="password" name="matkhau" id="matkhau" value="" />
-                                                </td>
-                                            </tr>
                                         </table>
                                         <div class="group-btn">
-                                            <button class="btn btn-primary" style="width: 100px;" type="submit">
+                                            <button class="btn btn-primary" type="submit" style="width: 100px;" type="submit">
                                                 Lưu
                                             </button>
-                                            <button class="btn btn-danger" onclick="close()" style="width: 100px;" >
+                                            <a class="btn btn-danger" href="/account/info={{lcAuthUser.account_id}}" style="width: 100px;" >
                                                 Đóng
-                                            </button>
+                                            </a>
                                         </div>
                                     </form>
                                 </div>

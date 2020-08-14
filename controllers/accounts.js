@@ -89,4 +89,26 @@ module.exports = {
         req.session.authUser = null;
         res.redirect('/index');
     },
+
+    updateinfo: async function(req, res)
+    {
+        var entity = {
+            account_name: req.body.ten,
+            account_address: req.body.address,
+            account_birthday: req.body.ngaysinh,
+            account_id: req.session.authUser.account_id,
+            account_phone: req.body.phone,
+        }
+
+        const url = req.session.authUser.account_id;
+
+        const result = await account.upload(entity);
+
+        req.session.authUser.account_name = entity.account_name;
+        req.session.authUser.account_address = entity.account_address;
+        req.session.authUser.account_birthday = entity.account_birthday;
+        req.session.authUser.account_phone = entity.account_phone;
+
+        res.redirect(`info=${url}`);
+    }
 };

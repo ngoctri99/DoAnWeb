@@ -13,6 +13,7 @@ router.post('/register', accountController.register);
 
 // chua lam
 router.get('/info=:id', accountController.infoindex);
+router.post('/info=:id', accountController.updateinfo);
 
 router.get('/logout', accountController.logout);
 

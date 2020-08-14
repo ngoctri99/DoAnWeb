@@ -7,7 +7,7 @@ module.exports = {
         return db.load(`select * from ${TBL_POSTS} where account_status = 1`);
     },
     getAccount: async function(email, pass) {
-        return db.load(`select account_birthday, account_email,account_id,account_name,account_level,account_image from ${TBL_POSTS} where account_email = '${email}' and account_password = '${pass}'`);
+        return db.load(`select account_phone, account_address, account_birthday, account_email,account_id,account_name,account_level,account_image from ${TBL_POSTS} where account_email = '${email}' and account_password = '${pass}'`);
     },
     getEmailExist: function(entity) {
         return db.load(`select account_email from ${TBL_POSTS} where account_status = 1 and account_email = '${entity.account_email}'`);
@@ -26,5 +26,13 @@ module.exports = {
     },
     addvip: function(entity){
         return db.add('vip_registration', entity);
-    }
+    },
+    upload: function(entity)
+    {
+        const condition ={
+            account_id: entity.account_id,
+        }
+        delete entity.account_id;
+        db.patch(TBL_POSTS,entity,condition)
+    },
 };
