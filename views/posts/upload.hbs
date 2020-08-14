@@ -1,46 +1,53 @@
+<script src="https://cdn.tiny.cloud/1/0kz5xltthdr6isg6zjuqpeksn8azfcg13aj7gvbx8mj8th1z/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
 
-    <script src="https://cdn.tiny.cloud/1/0kz5xltthdr6isg6zjuqpeksn8azfcg13aj7gvbx8mj8th1z/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <script>
-      tinymce.init({
+<script>
+    tinymce.init({
         selector: '#fulldes',
         height: 450,
         plugins: 'paste image link autolink lists table media',
         menubar: false,
         toolbar: [
-        'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright | forecolor backcolor | table link image media',
+            'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright | forecolor backcolor | table link image media',
         ]
-      });
-    </script>
+    });
+</script>
 
+<div class="wrapper">
+    <div class="container">
+        <h1>Đăng bài viết</h1>
+        <form class="POST" method="POST">
+            <div>
+                <h4>Tiêu đề bài viết</h3>
+                    <input type="tel" name="txtTieude" id="txtTieude" placeholder="Tiêu Đề bài viết">
+            </div>
+            <div>
+                <h4>Mô tả bài viết</h3>
+                    <input type="tel" name="txtTomtat" id="txtTomtat" placeholder="Mô tả bài viết">
+            </div>
+            <div>
+                <h4>Tag của bài viết</h3>
+                    <input type="tel" name="txtTomtat" id="txtTomtat" placeholder="Tag" style="font-style: italic;">
+            </div>
+            <div>
+                <h4>Danh mục bài viết</h3>
+                    <select name="txtChuyenmuc" id="txtChuyenmuc" style="margin: 10px;">
+                        {{#each this.categori}}
+                        <option value="{{category_id}}">{{category_name}}</option>
+                        {{/each}}
+                    </select>
+            </div>
 
-<h1>Đăng bài viết</h1>
-<form method="POST" >
-    <div>
-        <h3>Tiêu đề bài viết</h3>
-        <input type="text" name="txtTieude" id="txtTieude" value="Tiêu Đề">
+            <div class="card">
+                <div class="card-body">
+                    <label for="fulldes"></label>
+                    <textarea name="fulldes" id="fulldes" class="form-control"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-lg btn-success btn-block">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Submit
+            </button>
+        </form>
     </div>
-    <div>
-        <h3>Tóm tắt bài viết</h3>
-        <input type="text" name="txtTomtat" id="txtTomtat" value="Tóm tắt">
-    </div>
-    <div>
-        <h3>Chuyên mục bài viết</h3>
-        <select name="txtChuyenmuc" id="txtChuyenmuc">
-        {{#each this.categori}}
-            <option value="{{category_id}}">{{category_name}}</option>
-        {{/each}}
-        </select>
-    </div>
-
-    <div class="card" >
-        <div class="card-body">
-            <label for="fulldes"></label>
-            <textarea name="fulldes" id="fulldes" class="form-control"></textarea>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-lg btn-success btn-block">
-        <i class="fa fa-check" aria-hidden="true"></i>
-        Submit
-      </button>
-</form>
+</div>

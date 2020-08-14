@@ -22,7 +22,7 @@ input.ggg {
     border: 1px solid #fff;
     outline: none;
     font-size: 14px;
-    color: #fff;
+    color: rgb(10, 10, 10);
     margin: 14px 0px;
     background: none;
 }
@@ -40,7 +40,7 @@ input.ggg {
 
 .w3layouts-main span {
     font-size: 16px;
-    color: #fff;
+    color: rgb(92, 91, 91);
     float: left;
     width: 32%;
     margin-top: 8px;
@@ -50,14 +50,14 @@ input.ggg {
     font-size: 16px;
     float: right;
     width: 37%;
-    color: #fff;
+    color: rgb(14, 13, 13);
     letter-spacing: 1px;
     margin-top: 8px;
     text-decoration: underline;
 }
 
 .w3layouts-main a {
-    color: #fff;
+    color: rgb(129, 128, 128);
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -66,7 +66,7 @@ input.ggg {
 }
 
 .w3layouts-main a:hover {
-    color: #f0bcb4;
+    color: #0a0a0a;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -80,7 +80,7 @@ input.ggg {
     text-transform: uppercase;
     letter-spacing: 2px;
     background: #f0bcb4;
-    color: white;
+    color: rgb(8, 8, 8);
     border: none;
     outline: none;
     display: table;
@@ -94,7 +94,7 @@ input.ggg {
 }
 
 .w3layouts-main input[type="submit"]:hover {
-    background: #8b5c7e;
+    background: #ee5ea6;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -103,17 +103,17 @@ input.ggg {
 }
 
 .w3layouts-main p a {
-    color: #f0bcb4;
+    color: #706f6f;
     padding: 10px;
 }
 
 .w3layouts-main p a:hover {
-    color: #fff;
+    color: rgb(8, 8, 8);
 }
 
 .w3layouts-main p {
     font-size: 17px;
-    color: #fff;
+    color: rgb(104, 102, 102);
     text-align: center;
 }
 
@@ -126,7 +126,7 @@ h4 input[type="checkbox"] {
 
 .w3layouts-main h4 {
     margin-right: 10px;
-    color: #fff;
+    color: rgb(10, 10, 10);
     font-weight: 400;
     font-size: 14px;
 }
