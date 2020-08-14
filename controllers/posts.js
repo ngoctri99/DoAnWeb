@@ -93,8 +93,14 @@ module.exports = {
       post_id : req.params.id
     };
     var post = await postsModels.getNumbers(entity.post_id);
+    await this.updateView(entity.post_id);
     res.render('posts/post',{post:post[0]});
   },
-
+  updateView: async function(req, res, next){
+    const entity = {
+      post_id : req.params.id
+    };
+    await postsModels.getNumbers(entity.post_id);
+  }
 
 };

@@ -29,7 +29,7 @@ a {
     height: 40px;
     margin-left: 450px;
     position: relative;
-    display: none;
+    display: block;
 }
 
 .header .logo-user img {
@@ -51,7 +51,6 @@ a {
 
 .header .menu ul {
     list-style: none;
-    line-height: 55px;
 }
 
 .header .menu ul li {
@@ -113,6 +112,36 @@ a {
     right: 10px;
 }
 
+.search-login .logo-user .sub-logo {
+    line-height: 30px;
+    background: #fff;
+    position: absolute;
+    left: -38px;
+    top: 70px;
+    text-align: center;
+    width: 200px;
+    float: unset;
+    z-index: 100000;
+    color: #000;
+    box-shadow: 0px 0px 3px 3px rgba(173, 170, 170, 0.952);
+    list-style: none;
+    display: none;
+}
+
+.search-login .logo-user .sub-logo a {
+    font-size: 1.2em;
+    color: #000;
+}
+
+
+/* .search-login .logo-user:active>.sub-logo {
+    display: block;
+} */
+
+.logo-user .sub-logo a:hover {
+    color: orangered;
+}
+
 .header .menu ul li .sub-menu {
     line-height: 30px;
     background: #fff;
@@ -120,7 +149,7 @@ a {
     left: -38px;
     top: 100px;
     text-align: center;
-    width: 170px;
+    min-width: 200px;
     display: none;
     float: unset;
     z-index: 100000;
@@ -143,14 +172,54 @@ a {
 }
 
 .header .menu ul li .sub-menu li {
-    padding: 15px;
+    padding: 10px 40px;
 }
+
+.header .menu ul li .sub-menu-2 li {
+    padding: 10px 0px;
+}
+
+.header .menu ul li .sub-menu-2 {
+    line-height: 30px;
+    background: #fff;
+    position: absolute;
+    left: 180px;
+    top: 10px;
+    /* text-align: center; */
+    min-width: 200px;
+    display: none;
+    float: unset;
+    z-index: 100000;
+    color: #000;
+    box-shadow: 0px 0px 3px 3px rgba(173, 170, 170, 0.952);
+}
+
+.header .sub-menu.sub-menu-2 a {
+    color: #000;
+    font-size: 1.2em;
+    float: left;
+}
+
+.header .sub-menu li:hover>.sub-menu-2 {
+    display: block;
+    top: 15px;
+    padding: 5px;
+}
+
+.header .sub-menu-2 ul li a:hover {
+    color: rgb(240, 65, 22);
+}
+
+
+/* .header .sub-menu li .sub-menu-2 li {
+    padding: 15px;
+} */
 
 .bn-right-cnt img,
 .bn-right-cnt-bottom-right img,
 .bn-right-cnt-bottom-left img {
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
 }
 
 .content {
@@ -160,8 +229,8 @@ a {
 }
 
 .content .main-cnt {
-    width: 100%;
-    height: 800px;
+    min-width: 100%;
+    min-height: 500px;
     /* background: rgb(248, 7, 108); */
 }
 
@@ -199,32 +268,31 @@ a {
     font-size: 16px;
 }
 
-.post {
-    width: 100%;
-    min-height: 600px;
+.posts {
+    max-width: 100%;
+    min-height: 300px;
     /* background: rgb(119, 140, 231); */
 }
 
-.post .img {
-    width: 100%;
-    height: 250px;
-    background: rgb(46, 3, 32);
+.posts .img {
+    max-width: 300px;
+    height: 100px;
     margin: 10px 0px;
 }
 
-.post .img img {
-    width: 100%;
-    height: 100%;
+.posts .img img {
+    width: 250px;
+    height: 150px;
 }
 
-.post .decs {
+.posts .decs {
     width: 100%;
-    height: 250px;
+    min-height: 150px;
     /* background: rgb(11, 56, 41); */
     margin: 10px 0px;
 }
 
-.post .decs a {
+.posts .decs a {
     text-decoration: none;
 }
 
@@ -247,33 +315,33 @@ a {
     text-align: center;
 }
 
-.post-hig {
-    width: 100%;
-    height: 600px;
+.posts-hig {
+    max-width: 100%;
+    min-height: 600px;
     background: #fff;
 }
 
-.post-hig a {
+.posts-hig a {
     text-decoration: none;
 }
 
-.post-hig .posthig {
+.posts-hig .postshig {
     margin: 0px 5px;
 }
 
-.post-hig .img {
+.posts-hig .img {
     width: 100%;
     height: 120px;
     background: rgb(46, 3, 32);
     margin: 10px 0px;
 }
 
-.post-hig .img img {
+.posts-hig .img img {
     width: 100%;
     height: 100%;
 }
 
-.post-hig .decs {
+.posts-hig .decs {
     width: 100%;
     height: 120px;
     /* background: rgb(11, 56, 41); */
@@ -281,7 +349,7 @@ a {
 }
 
 .footer {
-    width: 100%;
+    max-width: 100%;
     min-height: 80px;
     background: #000;
 }
@@ -297,6 +365,10 @@ a {
     position: relative;
 }
 
+.content .main-cnt-2 {
+    margin: 20px;
+}
+
 .footer .logo-footer img {
     width: 100px;
     height: 100px;
@@ -309,7 +381,7 @@ a {
 .footer .inf-footer p {
     text-align: center;
     color: #fff;
-    font-size: 1.2em;
+    font-size: 1.0em;
 }
 
 .menu-nav {
@@ -319,7 +391,7 @@ a {
 
 /* reposive */
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 760px) {
     .header {
         height: 50px;
         width: 100%;
@@ -429,4 +501,8 @@ a {
     .active {
         display: block;
     }
+}
+
+.show {
+    display: block !important;
 }

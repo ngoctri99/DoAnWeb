@@ -1,0 +1,15 @@
+.POST input {
+    margin-left: 100px;
+    min-width: 80%;
+    min-height: 50px;
+    padding: 5px;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+}
+
+h4 {
+    margin: 5px;
+}
