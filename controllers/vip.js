@@ -4,6 +4,7 @@ module.exports = {
 
     duyetregistration:async function(req, res)
     {
+ 
         var date = new Date();
         var y = date.getFullYear();
         var m = date.getMonth() + 1;
@@ -62,14 +63,30 @@ module.exports = {
         res.redirect('/');
     },
     registration: async function(req, res){
+
+        if(!req.session.isAuthenticated)
+        {
+            res.redirect('/account');
+        }
+
         const entity = {
-            account_id: 1,
+            account_id: req.session.authUser.account_id,
             account_status: 2,
+            account_dateVip: req.body.day,
         };
+            console.log(req.body.day);
+            console.log(req.session.authUser.account_id);
+
 
           await vipModels.patch(entity);
+          res.redirect('/account')
     },
     updatehethang: async function(req, res){
+        if(!req.session.isAuthenticated)
+        {
+            res.redirect('/account');
+        }
+
         const entity = {
             account_id: 1,
             account_status: 3,
@@ -79,19 +96,43 @@ module.exports = {
     },
     kiemtrangayhethang: async function(req, res)
     {
+
+        if(!req.session.isAuthenticated)
+        {
+            res.redirect('/account');
+        }
+
         var date = new Date();
         const result = await vipModels.single(req.session.authUser.account_id);
+
+
+        const timediff = await vipModels.timediff(req.session.authUser.account_id);
+
+        timediff[0].timediff.slice(0,1);
+
+        if(timediff[0].timediff.slice(0,1) == '-')
+        {
+            const entity = {
+                account_id: req.session.authUser.account_id,
+                account_status: 3,
+            };
+              await vipModels.patch(entity);
+        }
+
 
         if (result[0]== null){
             res.render('vip/indexvip', { result: 0});
         }
         else {
-            if(result[0].hour >= 0)
+            if(result[0].account_status == 2)
             {
                 res.render('vip/indexvip', { result: 1 ,hour: result[0].hour, minute: result[0].minute, second: result[0].second})
             }
-            else{
-                res.render('vip/indexvip', { result: 0});
+            else if(result[0].account_status == 3){
+                res.render('vip/indexvip', { result: 0, result1: 1});
+            }
+            else if(result[0].account_status == 1){
+                res.render('vip/indexvip', { result: 0, result1: 0});
             }
         }
     }

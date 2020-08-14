@@ -32,19 +32,30 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-
-                            {{#if this.result}}
+                            {{#if this.result }}
                             <div class="main-inf">
                                 <h2>Thời gian còn lại của VIP</h2>
 
                                 <h1>{{this.hour}}H:{{this.minute}}P:{{second}}S</h1>
                             </div>
                             {{else}}
-                            <form action="">
-                                <h2>Đăng kí tài khoản vip</h2>
-                            </form>
+
+                                    {{#if this.result1}}
+                                    <form method="POST">
+                                        <h2>Đăng kí tài khoản vip</h2>
+                                        <h4>số ngày bạn muốn đăng kí</h4>
+                                        <select name="day" id="day">
+                                            <option value="1">1 ngày</option>
+                                            <option value="2 ">2 ngày</option>
+                                            <option value="7">7 ngày</option>
+                                            <option value="30">1 tháng</option>
+                                        </select>
+                                        <button type="submit">đăng kí</button>
+                                    </form>
+                                    {{else}}
+                                        <h2>Đăng kí Vip của bạn đang đợi phê duyệt</h2>
+                                    {{/if}}
                             {{/if}}
-                            
                         </div>
                     </div>
                 </div>

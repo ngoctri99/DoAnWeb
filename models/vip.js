@@ -13,7 +13,12 @@ module.exports = {
     },
     single: function(entity)
     {
-        return db.load(`select hour(TIMEDIFF(account_date, NOW())) as hour, minute(TIMEDIFF(account_date, NOW())) as minute, second(TIMEDIFF(account_date, NOW())) as second
+        return db.load(`select account_status, hour(TIMEDIFF(account_date, NOW())) as hour, minute(TIMEDIFF(account_date, NOW())) as minute, second(TIMEDIFF(account_date, NOW())) as second
         from vip_registration where account_id = ${entity}`);
+    },
+    timediff: function(entity)
+    {
+        return db.load(`select TIMEDIFF(account_date, NOW()) as timediff
+        from vip_registration where account_id = ${entity}`)
     }
 };

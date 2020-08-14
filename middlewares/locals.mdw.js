@@ -25,7 +25,7 @@ module.exports = function(app) {
     //         console.log('-- fetch `globalCategories');
     //         const rows = await categoryModel.allWithDetails();
     //         res.locals.lcCategories = rows;
-    //         cache.set(GLOBAL_CATEGORIES, rows);
+    //         cache.set(GLOBAL_CATEGORIES, rows)
     //     } else {
     //         console.log('++ cache hit for `globalCategories');
     //         for (const c of data) {

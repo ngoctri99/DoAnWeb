@@ -46,5 +46,8 @@ module.exports = {
     upload: function(entity1, entity2)
     {
       return db.load(`update ${TBL_POSTS} set post_image = '${entity1}' where post_slug = '${entity2}'`)
+    },
+    updateViews: function(entity){
+      return db.load(`update ${TBL_POSTS} set post_views = post_views + 1 where post_id = ${entity}`);
     }
   };
