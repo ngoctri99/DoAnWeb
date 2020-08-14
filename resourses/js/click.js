@@ -41,6 +41,15 @@ function showedit() {
 }
 
 function close() {
+    // var a = document.getElementById("ttchinh");
+    // var b = document.getElementById("chinhsua");
+    // if (a.style.display === "none" || b.style.display === "block") {
+    //     a.style.display = "block";
+    //     b.style.display = "none";
+    // } else {
+    //     a.style.display = "none";
+    //     b.style.display = "block";
+
     document.getElementById("ttchinh").style.display = "block";
     document.getElementById("chinhsua").style.display = "none";
 }

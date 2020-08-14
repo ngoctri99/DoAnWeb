@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 
 <head>
-    <title>Trang quản trị</title>
+    <title>Danh sách tài khoản cần duyệt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -70,9 +70,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                            <li><a href="login.admin.html"><i class="fa fa-key"></i> Log Out</a></li>
+
+                            <li><a href="index.admin.html"><i class="fa fa-key"></i>Đăng Xuất</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -124,12 +123,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <i class="fa fa-user"></i>
                                 <span>Duyệt Tài Khoản</span>
                             </a>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="fa fa-envelope"></i>
-                                    <span>Bình luận </span>
-                                </a>
-                            </li>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="fa fa-envelope"></i>
+                                <span>Bình luận </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- sidebar menu end-->
@@ -139,63 +139,80 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-                <!-- //market-->
-                <div class="market-updates">
-                    <div class="col-md-3 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-eye"> </i>
-                            </div>
-                            <div class="col-md-8 market-update-left">
-                                <h4>Lượt Xem</h4>
-                                <h3>13,500</h3>
-                                <p>Other hand, we denounce</p>
-                            </div>
-                            <div class="clearfix"> </div>
+                <!-- Danh mục  -->
+                <div class="table-agile-info">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Danh sách tài khoản cần duyệt
                         </div>
-                    </div>
-                    <div class="col-md-3 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-users"></i>
+                        <div class="row w3-res-tb">
+                            <div class="col-sm-5 m-b-xs">
+                                <select class="input-sm form-control w-sm inline v-middle">
+                                    <option value="0">Tất Cả</option>
+                                    <option value="1">Từ A->Z</option>
+                                    <option value="2">Từ Z->A</option>
+                  </select>
+                                <button class="btn btn-sm btn-default">Lọc</button>
                             </div>
-                            <div class="col-md-8 market-update-left">
-                                <h4>Đọc Giả</h4>
-                                <h3>1,250</h3>
-                                <p>Other hand, we denounce</p>
+                            <div class="col-sm-4">
                             </div>
-                            <div class="clearfix"> </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="input-sm form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+                      <button class="btn btn-sm btn-default" type="button">Go!</button>
+                    </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 market-update-gd">
-                        <div class="market-update-block clr-block-3">
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="col-md-8 market-update-left">
-                                <h4>VIPS</h4>
-                                <h3>1,500</h3>
-                                <p>Other hand, we denounce</p>
-                            </div>
-                            <div class="clearfix"> </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped b-t b-light">
+                                <thead>
+                                    <tr>
+                                        <th style="width:20px;">
+                                            <label class="i-checks m-b-none">
+                          
+                        </label>
+                                        </th>
+                                        <th>Tên Đăng Nhập</th>
+                                        <th>Thời gian yêu cầu</th>
+
+
+                                        <th style="width:30px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                                        <td>ABC</td>
+                                        <td><span class="Date">date</span></td>
+                                        <td>
+                                            <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                    <div class="col-md-3 market-update-gd">
-                        <div class="market-update-block clr-block-4">
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                        <footer class="panel-footer">
+                            <div class="row">
+                                <div class="col-sm-5 text-center">
+                                    <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                                </div>
+                                <div class="col-sm-7 text-right text-center-xs">
+                                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                                        <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
+                                        <li><a href="">1</a></li>
+                                        <li><a href="">2</a></li>
+                                        <li><a href="">3</a></li>
+                                        <li><a href="">4</a></li>
+                                        <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-md-8 market-update-left">
-                                <h4>Bình Luân</h4>
-                                <h3>1,500</h3>
-                                <p>Other hand, we denounce</p>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
+                        </footer>
                     </div>
-                    <div class="clearfix"> </div>
                 </div>
-                <!-- //market-->
             </section>
             <!-- footer -->
             <div class="footer">
