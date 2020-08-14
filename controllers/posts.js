@@ -5,8 +5,20 @@ module.exports = {
   // upload chuan khong can sua
   indexUpload: async function(req, res){
 
-    const result = await postsModels.categori();
-    res.render('posts/upload', { categori: result });
+    if(req.session.isAuthenticated)
+    {
+      if(req.session.authUser.account_id == 3)
+      {
+        const result = await postsModels.categori();
+        res.render('posts/upload', { categori: result });
+      }
+      else{
+        res.redirect();
+      }
+    }
+    else{
+      res.redirect();
+    }
   },
 
   upload: async function(req, res){
@@ -32,7 +44,20 @@ module.exports = {
 
   indexUploadimg: function(req, res)
   {
-    return res.render('posts/uploadimg')
+
+    if(req.session.isAuthenticated)
+    {
+      if(req.session.authUser.account_id == 3)
+      {
+        return res.render('posts/uploadimg')
+      }
+      else{
+        res.redirect();
+      }
+    }
+    else{
+      res.redirect();
+    }
   },
 
   uploadimg: async function(req, res)
