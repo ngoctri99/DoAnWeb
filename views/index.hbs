@@ -13,17 +13,6 @@
                                                 New Post
                                             </h4>
                                         </div>
-                                        {{!-- {{#each this.page.count_item}}
-                                        {{#if (page.count_items.length > 0) }} 
-                                            <ul class="pagination text-center">
-                                            {{#if (page.pageCurrent == 1)}}
-                                            <li class="disabled"><a>First</a></li>
-                                            {{#else}}
-                                            <li><a >First</a></li>
-                                            {{/if}}
-                                            </ul>
-                                        {{/if}}
-                                        {{/each}} --}}
                                         <ul class="sub-menu-cnt">
                                             <li><a href="/index?page={{this.page.first}}">First</a></li>
                                             <li><a href="/index?page={{this.page.previous}}">Previous</a></li>
@@ -36,19 +25,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="post">
+                            <div class="post" id="get_post_view" name="{{this.page.limit}}">
                                 {{#each this.page.posts}}
-                                    <div class="row">
+                                <div class="row" id="post_view{{id}}" name="{{post.post_id}}_{{post.post_level}}">
                                     <div class="col-md-5">
                                         <div class="img">
-                                            <a href="/post/post={{post_id}}"><img src="images/{{post_image}}" alt=" " /></a>
-                                        </div>
+                                            <a><img src="images/{{post.post_image}}" alt=" " /></a>
+                                            </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="decs">
-                                            <a href="/post/post={{post_id}}">
+                                            <a>
                                                 <p>
-                                                    {{post_name}}
+                                                    {{post.post_name}}
                                                 </p>
                                             </a>
                                         </div>
@@ -92,6 +81,32 @@
                 </div>
             </div>
         </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+       
+        $(document).ready(function(){
+                for(var i = 0; i< $('div[id^=get_post_view]').attr("name");i++){
+                    $('div[id^=post_view'+i+']').click(function(){
+                        var user_level = 1;
+                        {{#if lcIsAuthenticated}}
+                              user_level = {{lcAuthUser.account_level}};
+                        {{/if}}
+                        var data = $(this).attr("name");
+                        var split = data.split("_");
+                        var post_id = split[0];
+                        var post_level = split[1];
+                        if( user_level >= 1 && user_level != 3){
+                           window.location.href=window.location.origin+'/post/post='+post_id;
+                        }else{
+                            alert("Bạn phải đăng ký tài khoản Vip mới có thể xem bài viết này!!!");
+                        }
+                    });
+                    
+                   // $('div[id^=post_view'+i+']').hover(function(){
+                   //     $(this).css("background","red");
+                   // });
+                }   
+        });
+    </script>
 
    
