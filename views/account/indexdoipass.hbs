@@ -1,0 +1,18 @@
+<div class="log-w3">
+    <div class="w3layouts-main">
+        <h2>Đổi password</h2>
+        <form  method="post">
+            <input type="password" class="ggg" name="passwordold" placeholder="PASSWORD" required="" />
+            <input type="password" class="ggg" name="passwordnew" placeholder="PASSWORD NEW" required="" />
+            <input type="password" class="ggg" name="passwordnew1" placeholder="Lập Lại PASSWORD NEW" required="" />
+            {{#if this.result}}
+                <h5 style="color: red;">password cũ sai hoặc lập lại password mới không chính xác</h5>
+            {{/if}}
+            {{#if this.result1}}
+                 <h5 style="color: green;">đổi password thành công</h5>
+            {{/if}}
+            <div class="clearfix"></div>
+            <input type="submit" value="Đổi password" name="doipass" />
+        </form>
+    </div>
+</div>

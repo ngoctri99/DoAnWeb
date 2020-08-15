@@ -110,5 +110,49 @@ module.exports = {
         req.session.authUser.account_phone = entity.account_phone;
 
         res.redirect(`info=${url}`);
+    },
+
+    indexdoipass: function(req, res)
+    {
+        // kiem tra session de vao indexdoipass
+        if(req.session.isAuthenticated)
+        {
+            res.render('account/indexdoipass')
+        }
+        res.redirect('/account');
+
+    },
+
+    doipass: async function(req, res)
+    {
+        // kiem tra session
+        if(!req.session.isAuthenticated)
+        {
+            res.render('/account')
+        }
+
+        const entity = {
+            account_id: req.session.authUser.account_id,
+            account_password: req.body.passwordnew,
+        }
+        const passwordnew1 = req.body.passwordnew1;
+
+        const result = await account.getpassword(entity.account_id);
+
+        if (entity.password == result[0].account_pasword)
+        {
+            if(entity.account_password == passwordnew1)
+            {
+                await account.upload(entity);
+                res.render('account/indexdoipass', {result: 0, result1: 1});
+            }
+            else
+            {
+                res.render('account/indexdoipass', {result: 1});
+            }
+        }
+        else{
+            res.render('account/indexdoipass', {result: 1});
+        }
     }
 };

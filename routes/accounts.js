@@ -17,4 +17,7 @@ router.post('/info=:id', accountController.updateinfo);
 
 router.get('/logout', accountController.logout);
 
+router.get('/doipass', accountController.indexdoipass);
+router.post('/doipass', accountController.doipass);
+
 module.exports = router;

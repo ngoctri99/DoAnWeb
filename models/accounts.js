@@ -35,4 +35,8 @@ module.exports = {
         delete entity.account_id;
         db.patch(TBL_POSTS,entity,condition)
     },
+
+    getpassword: function(entity){
+        return db.load(`select account_password from account where account_id = '${entity}'`)
+    },
 };
