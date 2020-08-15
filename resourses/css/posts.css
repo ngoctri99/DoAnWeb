@@ -4,7 +4,7 @@
 }
 
 .content .main-posts {
-    width: 100%;
+    width: 50%;
     min-height: 800px;
     background: pink;
 }
@@ -34,19 +34,19 @@
 
 .content .relate-posts {
     width: 100%;
-    min-height: 300px;
+    min-height: 100px;
     background: rgb(250, 192, 214);
     margin: 10px 0px;
 }
 
 .relate-posts .img-relate {
-    height: 200px;
+    height: 100px;
     background: rgb(160, 238, 87);
     margin: 10px 10px;
 }
 
 .relate-posts .content-relate {
-    height: 100px;
+    height: 50px;
     background: rgb(223, 177, 77);
     margin: 5px 10px;
 }
@@ -54,4 +54,70 @@
 .relate-posts .content-relate a {
     text-decoration: none;
     font-size: 1.3em;
+}
+
+.post_cate {
+    background: rgb(7, 179, 50);
+    width: 50%;
+    min-height: 40px;
+    margin-left: 50%;
+}
+
+.post_cate a {
+    text-decoration: none;
+    padding: 5px 50px;
+}
+
+.img-post {
+    width: 100%;
+    min-height: 50px;
+}
+
+.img-post a {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+.img-post img {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+.comment-post {
+    width: 100%;
+    min-height: 100px;
+    background: rgb(228, 199, 199);
+    margin: 15px;
+}
+
+.comment-post input {
+    width: 100%;
+    min-height: 40px;
+    margin: 5px;
+}
+
+.comment-post p {
+    border: 1.5px solid#fff;
+    margin: 5px;
+    min-height: 40px;
+}
+
+.post_cates {
+    text-decoration: none;
+    background: rgb(126, 98, 98);
+    /* margin: 5px 5px 0px 10px; */
+    margin-left: 30%;
+    text-align: right;
+}
+
+.post_cates a {
+    text-decoration: none;
+    float: left;
+    text-align: right;
+}
+
+.post_cates label {
+    text-align: right;
 }
