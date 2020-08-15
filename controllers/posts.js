@@ -1,4 +1,5 @@
 const postsModels = require('../models/posts');
+const vipModels = require('../models/vip');
 const multer = require('multer');
 const slug = require('slug')
 module.exports = {
@@ -87,15 +88,41 @@ module.exports = {
     const entity = {
       post_id : req.params.id
     };
+
     var post = await postsModels.getNumbers(entity.post_id);
-    await this.updateView(entity.post_id);
-    res.render('posts/post',{post:post[0]});
+
+    if(post[0].post_level == 2)
+    {
+      if(req.session.isAuthenticated != null)
+      {
+        if(req.session.authUser.account_level == 2)
+        {
+          const timediff = await vipModels.timediff(req.session.authUser.account_id);
+
+          if(timediff[0].timediff.slice(0,1) == '-')
+          {
+            vipModels.updatehethang(req, res);
+            res.redirect('/vip/kt');
+          }
+          else {
+            res.render('posts/post',{post:post[0]});
+          }
+        }
+        else
+        {
+          res.redirect('/vip/kt');
+        }
+
+      }
+      else if(!req.session.isAuthenticated)
+      {
+        res.redirect('/vip/kt');
+      }
+    }
+    else if(post[0].post_level != 2)
+    {
+      res.render('posts/post',{post:post[0]});
+    }
   },
-  updateView: async function(req, res, next){
-    const entity = {
-      post_id : req.params.id
-    };
-    await postsModels.getNumbers(entity.post_id);
-  }
 
 };

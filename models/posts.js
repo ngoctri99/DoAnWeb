@@ -11,7 +11,7 @@ module.exports = {
       //get one post
       if(post_id != 0) {
         sql += " where post_status = 1 and post_id =  "+ post_id;
-        return sql;
+        return db.load( sql);
       }
       sql+= " where post_status = 1 ";
       if(category_id != 0) sql+=  " and category_id = " + category_id;

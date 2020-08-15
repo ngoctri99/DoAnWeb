@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="col-md-7">
                                         <div class="decs">
-                                            <a>
+                                            <a href="/post/post={{post.post_id}}">
                                                 <p>
                                                     {{post.post_name}}
                                                 </p>
@@ -82,31 +82,3 @@
             </div>
         </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-       
-        $(document).ready(function(){
-                for(var i = 0; i< $('div[id^=get_post_view]').attr("name");i++){
-                    $('div[id^=post_view'+i+']').click(function(){
-                        var user_level = 1;
-                        {{#if lcIsAuthenticated}}
-                              user_level = {{lcAuthUser.account_level}};
-                        {{/if}}
-                        var data = $(this).attr("name");
-                        var split = data.split("_");
-                        var post_id = split[0];
-                        var post_level = split[1];
-                        if( user_level >= 1 && user_level != 3){
-                           window.location.href=window.location.origin+'/post/post='+post_id;
-                        }else{
-                            alert("Bạn phải đăng ký tài khoản Vip mới có thể xem bài viết này!!!");
-                        }
-                    });
-                    
-                   // $('div[id^=post_view'+i+']').hover(function(){
-                   //     $(this).css("background","red");
-                   // });
-                }   
-        });
-    </script>
-
-   

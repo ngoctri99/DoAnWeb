@@ -1,4 +1,5 @@
 var vipModels = require("../models/vip");
+const accountModels = require("../models/accounts");
 
 module.exports = {
 
@@ -82,17 +83,19 @@ module.exports = {
           res.redirect('/account')
     },
     updatehethang: async function(req, res){
-        if(!req.session.isAuthenticated)
-        {
-            res.redirect('/account');
-        }
 
         const entity = {
-            account_id: 1,
+            account_id: req.session.authUser.account_id,
             account_status: 3,
         };
+        const entity1 = {
+            account_id:req.session.authUser.account_id,
+            account_level: 1,
+        };
 
-          await vipModels.patch(entity);
+        await accountModels.patch(entity1);
+        await vipModels.patch(entity);
+        req.session.authUser.account_level = 1;
     },
     kiemtrangayhethang: async function(req, res)
     {
@@ -105,7 +108,6 @@ module.exports = {
         var date = new Date();
         const result = await vipModels.single(req.session.authUser.account_id);
 
-
         const timediff = await vipModels.timediff(req.session.authUser.account_id);
 
         timediff[0].timediff.slice(0,1);
@@ -116,7 +118,14 @@ module.exports = {
                 account_id: req.session.authUser.account_id,
                 account_status: 3,
             };
+
+            const entity1 = {
+                account_id:req.session.authUser.account_id,
+                account_level: 1,
+            }
               await vipModels.patch(entity);
+              await accountModels.upload(entity1);
+              req.session.authUser.account_level = 1;
         }
 
 
