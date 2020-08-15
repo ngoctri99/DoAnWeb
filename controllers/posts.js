@@ -1,7 +1,10 @@
 const postsModels = require('../models/posts');
 const vipModels = require('../models/vip');
 const multer = require('multer');
-const slug = require('slug')
+const slug = require('slug');
+var commentModels = require('../models/comments');
+var categoriesModel = require('../models/categories');
+var limitPostHot = 5;
 module.exports = {
   // upload chuan khong can sua
   indexUpload: async function(req, res){
@@ -93,12 +96,26 @@ module.exports = {
 	//get post connection moi nhat
     var postConnection = await postsModels.getNumbers(0,post["post_cate"],false,true,4);
     //get comment
+    var list_cate = [];
+  var list_cateParent = await categoriesModel.getAllParent();
+  for(var i = 0; i < list_cateParent.length; i++){
+    var list_cateSub = await categoriesModel.getAllSub(list_cateParent[i].category_id);
+      var item = {
+        categoryParent: list_cateParent[i],
+        categoriesSub: list_cateSub,
+        empty: list_cateSub.length !== 0
+    };
+      list_cate.push(item);
+    }
+    //get post hot
+  var list_post_hot = await postsModels.getHot(limitPostHot);
+  //gae comment
     var postComment = await commentModels.loadComment(entity.post_id);
     var pagePost = [];
     pagePost.post = post[0];
     pagePost.postConnection = postConnection;
     pagePost.postComment = postComment;
-    
+    pagePost.categories = list_cate;
 
     if(post[0].post_level == 2)
     {
@@ -115,7 +132,7 @@ module.exports = {
           }
           else {
 		await postsModels.updateViews(entity.post_id);
-            res.render('posts/post',{post:pagePost});
+            res.render('posts/post',{page:pagePost});
           }
         }
         else
@@ -126,13 +143,13 @@ module.exports = {
       }
       else if(!req.session.isAuthenticated)
       {
-        res.redirect('/vip/kt');
+        res.redirect('/index');
       }
     }
     else if(post[0].post_level != 2)
     {
 	await postsModels.updateViews(entity.post_id);
-      res.render('posts/post',{post:pagePost});
+      res.render('posts/post',{page:pagePost});
     }
   },
 

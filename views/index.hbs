@@ -25,9 +25,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="post" id="get_post_view" name="{{this.page.limit}}">
+                            <div class="post " id="get_post_view" name="{{this.page.limit}}">
                                 {{#each this.page.posts}}
-                                <div class="row" id="post_view{{id}}" name="{{post.post_id}}_{{post.post_level}}">
+                                <div class="row hoverSomething" id="post_view{{id}}" name="{{post.post_id}}_{{post.post_level}}">
                                     <div class="col-md-5">
                                         <div class="img">
                                             <a><img src="images/{{post.post_image}}" alt=" " /></a>
@@ -58,17 +58,17 @@
                             </div>
                             <div class="post-hig">
                                 {{#each this.page.posts_hot}}
-                                <div class="row posthig">
+                                <div class="row posthig hoverSomething" >
                                     <div class="col-md-5">
                                         <div class="img">
-                                            <a href="/post/post={{post_id}}"><img src="images/{{post_image}}" alt=" " /></a>
+                                            <a href="/post/post={{postHot.post_id}}"><img src="images/{{postHot.post_image}}" alt=" " /></a>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="decs">
-                                            <a href="/post/post={{post_id}}">
+                                            <a href="/post/post={{postHot.post_id}}">
                                                 <p>
-                                                    {{post_name}}
+                                                    {{postHot.post_name}}
                                                 </p>
                                             </a>
                                         </div>

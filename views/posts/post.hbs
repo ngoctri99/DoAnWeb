@@ -2,11 +2,11 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="main-posts">
-                            <h2>Teen  {{post.post.post_name}}</h2>
+                            <h2>{{page.post.post_name}}</h2>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="main-content">
-                                      {{{post.post.post_decs}}}
+                                      {{{page.post.post_decs}}}
                                     </div>
                                 </div>
                             </div>
@@ -25,7 +25,7 @@
                                     <div class="relate-posts">
                                         <h3>Bài viết liên quan</h3>
                                         <div class="row">
-                                            {{#each post.postConnection}}
+                                            {{#each page.postConnection}}
                                             <div class="col-md-6">
                                                 <div class="img-relate"></div>
                                                 <div class="content-relate">
@@ -36,14 +36,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>Xem thêm...</div>
                             </div>
                             {{!-- --------------------------------------- --}}
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="commnet">
-                                        {{#each post.postComment}}
+                                        {{#each page.postComment}}
                                         <div class="col-md-4">
                                 <div class="img">
                                     <a><img src="images/{{account_image}}" alt=" " /></a>
@@ -59,41 +58,11 @@
                                         </div>
                                     </div>
                                     {{/each}}
-                                    <div>Xem thêm...</div>
                                         </div>
                                     </div>
                             </div>
                         </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                        <div class="hig">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="name-hig">
-                                        <h4>Tin nổi bật</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="posts-hig">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="img">
-                                            <a href="#"><img src="./public/images/IMG_20200615_185215.jpg" alt="" /></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="decs">
-                                            <a href="#">
-                                                <p>
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat, tempora?
-                                                </p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
             </div>
         </div>
     </div>
