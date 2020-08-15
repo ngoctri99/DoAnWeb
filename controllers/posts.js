@@ -90,6 +90,15 @@ module.exports = {
     };
 
     var post = await postsModels.getNumbers(entity.post_id);
+	//get post connection moi nhat
+    var postConnection = await postsModels.getNumbers(0,post["post_cate"],false,true,4);
+    //get comment
+    var postComment = await commentModels.loadComment(entity.post_id);
+    var pagePost = [];
+    pagePost.post = post[0];
+    pagePost.postConnection = postConnection;
+    pagePost.postComment = postComment;
+    
 
     if(post[0].post_level == 2)
     {
@@ -105,7 +114,8 @@ module.exports = {
             res.redirect('/vip/kt');
           }
           else {
-            res.render('posts/post',{post:post[0]});
+		await postsModels.updateViews(entity.post_id);
+            res.render('posts/post',{post:pagePost});
           }
         }
         else
@@ -121,7 +131,8 @@ module.exports = {
     }
     else if(post[0].post_level != 2)
     {
-      res.render('posts/post',{post:post[0]});
+	await postsModels.updateViews(entity.post_id);
+      res.render('posts/post',{post:pagePost});
     }
   },
 

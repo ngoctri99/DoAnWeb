@@ -10,6 +10,7 @@ var postsRouter = require('./routes/posts');
 var accountRouter = require('./routes/accounts');
 var pdfRouter = require('./routes/pdf');
 var vipRouter = require('./routes/vip');
+var categoriesRouter = require('./routes/categories');
 
 var app = express();
 app.set('view engine', 'hbs');
@@ -42,7 +43,7 @@ app.use('/post', postsRouter);
 app.use('/account', accountRouter);
 app.use('/pdf', pdfRouter);
 app.use('/vip', vipRouter);
-
+app.use('/category',categoriesRouter);
 
 
 // catch 404 and forward to error handler
