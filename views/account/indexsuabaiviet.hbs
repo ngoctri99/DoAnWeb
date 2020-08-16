@@ -1,0 +1,71 @@
+<script src="https://cdn.tiny.cloud/1/0kz5xltthdr6isg6zjuqpeksn8azfcg13aj7gvbx8mj8th1z/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        selector: '#fulldes',
+        height: 450,
+        plugins: 'paste image link autolink lists table media',
+        menubar: false,
+        toolbar: [
+            'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright | forecolor backcolor | table link image media',
+        ]
+    });
+</script>
+
+<div class="wrapper">
+    <div class="container">
+            <h1>Đăng bài viết</h1>
+        <form class="POST" method="POST">
+            <div>
+                <h4>Tiêu đề bài viết</h3>
+                    <input type="tel" name="txtTieude" id="txtTieude"  required="" value="{{result.post_name}}" >
+            </div>
+            <div>
+                <h4>Mô tả bài viết</h3>
+                    <input type="tel" name="txtTomtat" id="txtTomtat"  required="" value="{{result.post_meta}}">
+            </div>
+            <div>
+                <h4>Tag của bài viết</h3>
+                    <input type="tel" name="txtTag" id="txtTag"  style="font-style: italic;" required="" value="{{result.post_tag}}">
+            </div>
+            <div>
+                <h4>Danh mục bài viết</h3>
+                    <select name="txtChuyenmuc" id="txtChuyenmuc" style="margin: 10px;" >
+                        {{#each cate}}
+                        <option value="{{category_id}}">{{category_name}}</option>
+                        {{/each}}
+                    </select>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <label for="fulldes"></label>
+                    <textarea name="fulldes" id="fulldes" class="form-control">{{result.post_decs}}</textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-lg btn-success btn-block">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+<script>
+    $(document).ready(function(){
+         $("input[id=txtTag]").focusout(function(){
+            var date = $(this).val();
+            var chech = date.search(" ");
+            
+            if(chech >0){
+                alert("Tag phải theo chuẩn: #ten#ten1....(không xuất hiện khoảng trắng)");
+            }
+            else if(date[0] != '#'){
+                alert("Tag phải theo chuẩn: #ten#ten1....");
+            }
+        });
+    });
+</script>
