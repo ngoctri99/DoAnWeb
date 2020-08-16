@@ -1,0 +1,20 @@
+<div class="log-w3">
+    <div class="w3layouts-main">
+<h2>Quên password</h2>
+<h3>Mã otp đã được gửi vào email của bạn, vui lòng kiểm tra email</h3>
+<form  method="post">
+    <h4 >{{this.email}}</h4>
+    <input type="number" class="ggg" name="maOTP" placeholder="OTP" required="" />
+    <input type="password" class="ggg" name="passwordnew" placeholder="PASSWORD NEW" required="" />
+    <input type="password" class="ggg" name="passwordnew1" placeholder="Lập Lại PASSWORD NEW" required="" />
+    <div class="clearfix"></div>
+    <input type="submit" value="Lấy lại mật khẩu" />
+    {{#if this.result}}
+        <h5 style="color: red;">Mã OTP hoặc lập lại mật khẩu bị sai</h5>
+    {{/if}}
+    {{#if this.result1}}
+        <h5 style="color: green;">Lấy lại mật khẩu thành công</h5>
+    {{/if}}
+</form>
+    </div>
+</div>

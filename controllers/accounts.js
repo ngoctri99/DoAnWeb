@@ -1,6 +1,8 @@
 var account = require('../models/accounts');
 const bcrypt = require('bcryptjs');
 const restrict = require('../middlewares/auth.mdw');
+var nodemailer =  require('nodemailer');
+var OTP = 0;
 
 module.exports = {
     loginIndex: function(req, res, next) {
@@ -114,13 +116,15 @@ module.exports = {
 
     indexdoipass: function(req, res)
     {
-        // kiem tra session de vao indexdoipass
+        //kiem tra session de vao indexdoipass
         if(req.session.isAuthenticated)
         {
             res.render('account/indexdoipass')
         }
-        res.redirect('/account');
-
+        else
+        {
+            res.redirect('/account');
+        }
     },
 
     doipass: async function(req, res)
@@ -130,29 +134,91 @@ module.exports = {
         {
             res.render('/account')
         }
-
-        const entity = {
-            account_id: req.session.authUser.account_id,
-            account_password: req.body.passwordnew,
-        }
-        const passwordnew1 = req.body.passwordnew1;
-
-        const result = await account.getpassword(entity.account_id);
-
-        if (entity.password == result[0].account_pasword)
+        else
         {
-            if(entity.account_password == passwordnew1)
-            {
-                await account.upload(entity);
-                res.render('account/indexdoipass', {result: 0, result1: 1});
+            const entity = {
+                account_id: req.session.authUser.account_id,
+                account_password: req.body.passwordnew,
             }
-            else
+            const passwordnew1 = req.body.passwordnew1;
+            const result = await account.getpassword(entity.account_id);
+
+            if (entity.password == result[0].account_pasword)
             {
+                if(entity.account_password == passwordnew1)
+                {
+                    await account.upload(entity);
+                    res.render('account/indexdoipass', {result: 0, result1: 1});
+                }
+                else
+                {
+                    res.render('account/indexdoipass', {result: 1});
+                }
+            }
+            else{
                 res.render('account/indexdoipass', {result: 1});
             }
         }
-        else{
-            res.render('account/indexdoipass', {result: 1});
-        }
+    },
+
+    indexquenpass:async function(req, res)
+    {
+        res.render('account/indexquenpass');
+    },
+
+    xlindexquenpass:async function(req, res)
+    {
+
+            OTP= Math.floor(Math.random() * 999) + 1;
+        var transporter =  nodemailer.createTransport({ // config mail server
+            service: 'Gmail',
+            auth: {
+                user: 'leanhtruong011@gmail.com',
+                pass: '123123456789'
+            }
+        });
+        var mainOptions = { // thiết lập đối tượng, nội dung gửi mail
+            from: 'reset email',
+            to: req.body.email,
+            subject: 'reset email 4T',
+            text: 'Mã OTP để reset email',
+            html: `<p>Mã OTP của bạn là: ${OTP}</b>`
+        };
+        transporter.sendMail(mainOptions);
+
+        res.redirect(`/account/xlquenpass?email=${req.body.email}`);
+    },
+
+    indexxlquenpass: function(req, res)
+    {
+        res.render('account/indexxlquenpass', {email: req.query.email})
+    },
+
+    xlquenpass:async function(req, res)
+    {
+            const entity = {
+                account_email: req.query.email,
+                account_password: req.body.passwordnew,
+            };
+            console.log(entity.account_email);
+            const passwordnew1 = req.body.passwordnew1;
+
+            if(req.body.maOTP == OTP)
+            {
+                if(entity.account_password == passwordnew1)
+                {
+                    await account.uploadquenpass(entity);
+                    res.render('account/indexxlquenpass', {result: 0, result1: 1});
+                }
+                else
+                {
+                    res.render('account/indexxlquenpass', {result: 1});
+                }
+            }
+            else
+            {
+                res.render('account/indexxlquenpass', {result: 1})
+            }
+
     }
 };

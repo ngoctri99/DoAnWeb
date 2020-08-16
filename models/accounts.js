@@ -35,6 +35,14 @@ module.exports = {
         delete entity.account_id;
         db.patch(TBL_POSTS,entity,condition)
     },
+    uploadquenpass:  function(entity)
+    {
+        const condition ={
+            account_email: entity.account_email,
+        }
+        delete entity.account_email;
+        db.patch(TBL_POSTS,entity,condition)
+    },
 
     getpassword: function(entity){
         return db.load(`select account_password from account where account_id = '${entity}'`)

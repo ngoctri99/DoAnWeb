@@ -20,4 +20,10 @@ router.get('/logout', accountController.logout);
 router.get('/doipass', accountController.indexdoipass);
 router.post('/doipass', accountController.doipass);
 
+router.get('/quenpass', accountController.indexquenpass);
+router.post('/quenpass', accountController.xlindexquenpass);
+
+router.get('/xlquenpass', accountController.indexxlquenpass);
+router.post('/xlquenpass', accountController.xlquenpass);
+
 module.exports = router;
