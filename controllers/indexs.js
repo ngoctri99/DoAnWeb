@@ -1,22 +1,22 @@
 var postsModel = require('../models/posts');
 var categoriesModel = require('../models/categories');
-var limit = 3;
+var limit = 10;
 var limitPostHot = 5;
 var categoriesController = require('./categories');
 
-module.exports.LIMIT_POSTS = 3;
+module.exports.LIMIT_POSTS = 10;
 module.exports.LIMIT_POSTS_HOT = 5;
 
 module.exports.loadPage = async function(posts, limitPost, postsHot,limitPostHot,categories,pageCurrent = 1,url){
   var page = [];
-  var index = 0;
-  page.limit = limitPost + limitPostHot;
   //get category
   var list_cate = categories;
   //get all post
   var list_posts = posts;
   //get post hot
   var list_post_hot = postsHot;
+  //get danh muc hot
+
   //set count page
   page.pageCurrent = pageCurrent;
 
@@ -31,25 +31,12 @@ module.exports.loadPage = async function(posts, limitPost, postsHot,limitPostHot
     page.count_items.push(item);
   }
   //list post
-  page.posts = [];
-  var newListPost = list_posts.slice(start,end);
-  for(index; index < newListPost.length; index++){
-    var item = {
-      id: index,
-      post:newListPost[index]
-    }
-    page.posts.push(item);
-  }
+  page.posts =  list_posts.slice(start,end);
   //list hot post
-  page.posts_hot = [];
-  for(var i = 0; i < list_post_hot.length ; i++){
-    var item = {
-      id: index,
-      postHot:list_post_hot[i]
-    }
-    page.posts_hot.push(item);
-    index++;
-  }
+  page.posts_hot =list_post_hot;
+  // get post newst cua category
+  var categoriesViewMore = await postsModel.getCategoriesNewst();
+  console.log(categoriesViewMore)
   // page
   page.categories = list_cate;
   page.last = count;
@@ -59,25 +46,27 @@ module.exports.loadPage = async function(posts, limitPost, postsHot,limitPostHot
   page.previous = (page.pageCurrent==1)?1:page.pageCurrent - 1;
   page.next = (page.pageCurrent==count)?count:page.pageCurrent + 1;
   page.url = url;
+  page.emptyPostView = false;
   return page;
 }
 
 module.exports.index = async function(req, res, next) {
   var page = [];
-  var index = 0;
-  page.limit = limit+limitPostHot;
   //get category
   var list_cate = await categoriesController.loadCategories();
   //get all post
   var list_posts = await postsModel.all();
   //get post hot
   var list_post_hot = await postsModel.getHot(limitPostHot);
- 
+ //get post views
+ var list_post_view = await postsModel.getNumbers(0,0,true,false,limit);
+ //get category hot
+
   //set count page
   page.pageCurrent = req.query.page || 1;
 
   var start = (page.pageCurrent - 1)*limit;
-  var end = page.pageCurrent * limit
+  var end = page.pageCurrent * limit;
     //count page
   page.count_items = [];
   
@@ -87,25 +76,11 @@ module.exports.index = async function(req, res, next) {
     page.count_items.push(item);
   }
   //list post
-  page.posts = [];
-  var newListPost = list_posts.slice(start,end);
-  for(index; index < newListPost.length; index++){
-    var item = {
-      id: index,
-      post:newListPost[index]
-    }
-    page.posts.push(item);
-  }
+  page.posts =  list_posts.slice(start,end);
   //list hot post
-  page.posts_hot = [];
-  for(var i = 0; i < list_post_hot.length ; i++){
-    var item = {
-      id: index,
-      postHot:list_post_hot[i]
-    }
-    page.posts_hot.push(item);
-    index++;
-  }
+  page.posts_hot = list_post_hot;
+
+  page.posts_view = list_post_view;
   // page
   page.categories = list_cate;
   page.last = count;
@@ -113,5 +88,7 @@ module.exports.index = async function(req, res, next) {
   page.previous = (page.pageCurrent==1)?1:page.pageCurrent - 1;
   page.next = (page.pageCurrent==count)?count:page.pageCurrent + 1;
   page.url = "/index?";
+  page.emptyPostView = list_post_view.length > 0;
+
   res.render('index', { page: page});
   };

@@ -13,5 +13,8 @@ module.exports = {
     },
     checkParent(category_id){
       return db.load(`select category_id from  categories  where category_id = ${category_id} and category_cate  = 0`);
-    }
+    },
+    getAllSlug(){
+      return db.load(`select category_id, category_slug from categories`);
+    },
   };
