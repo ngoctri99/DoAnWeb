@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 
 <head>
-    <title>Danh sách tài khoản</title>
+    <title>Danh sách bài viết</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -48,12 +48,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <header class="header fixed-top clearfix">
             <!--logo start-->
             <div class="brand">
-                <a href="index.admin.html" class="logo">
-        VISITORS
+                <a href="/admin/vip" class="logo">
+        Admin
     </a>
-                <div class="sidebar-toggle-box">
-                    <div class="fa fa-bars"></div>
-                </div>
             </div>
             <!--logo end-->
             <div class="top-nav clearfix">
@@ -64,14 +61,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <!-- user login dropdown start-->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="">
                             <img alt="" src="images/2.png">
-                            <span class="username">John Doe</span>
+                            <span class="username">admin</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
 
-                            <li><a href="index.admin.html"><i class="fa fa-key"></i>Trang Chủ</a></li>
+                            <li><a href="/account/logout"><i class="fa fa-key"></i> Đăng Xuất</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -88,46 +85,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="leftside-navigation">
                     <ul class="sidebar-menu" id="nav-accordion">
                         <li>
-                            <a class="active" href="index.admin.html">
+                            <a class="active" href="/admin/vip">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Trang Chủ</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="danhmuc.admin.html">
-                                <i class="fa fa-book"></i>
-                                <span>Danh mục bài viết</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chuyenmuc.admin.html">
-                                <i class="fa fa-bullhorn"></i>
-                                <span>Chuyên mục bài viết</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="baiviet.admin.html">
+                            <a href="/admin/vip-editer">
                                 <i class="fa fa-th"></i>
                                 <span>Bài viết</span>
                             </a>
                         </li>
                         <li>
-                            <a href="taikhoan.admin.html">
-                                <i class="fa fa-tasks"></i>
-                                <span>Tài khoản</span>
+                            <a href="/admin/vip-user">
+                                <i class="fa fa-th"></i>
+                                <span>Người dùng</span>
                             </a>
                         </li>
                         <li>
-                            <a href="duyettaikhoan.admin.html">
-                                <i class="fa fa-user"></i>
-                                <span>Duyệt Tài Khoản</span>
+                            <a href="/admin/vip-giahan">
+                                <i class="fa fa-th"></i>
+                                <span>Gia hạn đọc giả vip</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-envelope"></i>
-                                <span>Bình luận </span>
+                            <a href="/admin/vip-phancong">
+                                <i class="fa fa-th"></i>
+                                <span>Phân công cho editer</span>
                             </a>
                         </li>
                     </ul>
@@ -147,20 +132,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="row w3-res-tb">
                             <div class="col-sm-5 m-b-xs">
-                                <select class="input-sm form-control w-sm inline v-middle">
-                                    <option value="0">Tất Cả</option>
-                                    <option value="1">Từ A->Z</option>
-                                    <option value="2">Từ Z->A</option>
-                  </select>
-                                <button class="btn btn-sm btn-default">Lọc</button>
+
                             </div>
                             <div class="col-sm-4">
                             </div>
                             <div class="col-sm-3">
                                 <div class="input-group">
-                                    <input type="text" class="input-sm form-control" placeholder="Search">
                                     <span class="input-group-btn">
-                      <button class="btn btn-sm btn-default" type="button">Go!</button>
                     </span>
                                 </div>
                             </div>
@@ -169,31 +147,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <table class="table table-striped b-t b-light">
                                 <thead>
                                     <tr>
-                                        <th style="width:20px;">
-                                            <label class="i-checks m-b-none">
-                          
-                        </label>
-                                        </th>
-                                        <th>Tên Đăng Nhập</th>
-                                        <th>Email</th>
-                                        <th>Loai Tài Khoản</th>
+                                        <th>Account id</th>
+                                        <th>Tên</th>
 
-                                        <th style="width:30px;"></th>
+                                        <th>Email</th>
+                                        <th>Nơi ở</th>
+                                        <th>Số điện thoại</th>
+                                        <th>chuyên mục</th>
+                                        <th>Thao Tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                                        <td>Tên Đăng Nhập</td>
-                                        <td><span class="text-ellipsis">Email</span></td>
-                                        <td><span class="text-ellipsis">Loại Tài Khoản</span></td>
-
+                                    {{#each result}}
+                                        <tr>
+                                        <td>{{account_id}}</td>
+                                        <td>{{account_email}}</td>
+                                        <td>{{account_name}}</td>
+                                        <td>{{account_address}}</td>
+                                        <td>{{account_phone}}</td>
+                                        <td style="color: red;">{{category_name}}</td>
+                                        <th>
+                                            {{#if account_status}}
+                                                <button><a href="/admin/vip-editchuyenmuc?id={{account_id}}">Đổi chuyên mục</a></button>
+                                            {{/if}}
+                                        </th>
                                     </tr>
+                                    {{/each}}
                                 </tbody>
                             </table>
                         </div>
                         <footer class="panel-footer">
                             <div class="row">
+
                                 <div class="col-sm-5 text-center">
                                     <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
                                 </div>
@@ -210,6 +195,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </footer>
                     </div>
+                    <!-- button add category -->
+                </div>
                 </div>
             </section>
             <!-- footer -->

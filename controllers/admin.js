@@ -1,5 +1,6 @@
 var adminModel = require('../models/admin');
-
+const accountModel = require('../models/accounts');
+const vipModel = require('../models/vip');
 
 
 module.exports = {
@@ -142,5 +143,196 @@ module.exports = {
             res.redirect('/index')
         }
 
-    }, 
+    },
+    indexvipuser: async function(req, res)
+    {
+        if(req.session.isAuthenticated )
+        {
+            if(req.session.authUser.account_level == 5)
+            {
+
+                const result = await adminModel.getaccount();
+                res.render('admin/user', {page: 1, result: result});
+            }
+            else{
+                res.redirect('/index')
+            }
+        }
+        else{
+            res.redirect('/index')
+        }
+    },
+    edituser: async function(req, res)
+    {
+        if(req.session.isAuthenticated )
+        {
+            if(req.session.authUser.account_level == 5)
+            {
+                const entity ={
+                    account_id: req.query.id,
+                    account_status: req.query.status,
+                }
+                await accountModel.upload(entity);
+                res.redirect('/admin/vip-user');
+            }
+            else{
+                res.redirect('/index')
+            }
+        }
+        else{
+            res.redirect('/index')
+        }
+    },
+    indexgiahan: async function(req, res)
+    {
+        if(req.session.isAuthenticated )
+        {
+            if(req.session.authUser.account_level == 5)
+            {
+                const result = await adminModel.getaccountvip();
+                res.render('admin/giahanvip', {page: 1, result: result});
+            }
+            else{
+                res.redirect('/index')
+            }
+        }
+        else{
+            res.redirect('/index')
+        }
+    },
+    xlgiahan: async function(req, res)
+    {
+        if(req.session.isAuthenticated )
+        {
+            if(req.session.authUser.account_level == 5)
+            {
+                var date = new Date();
+                var y = date.getFullYear();
+                var m = date.getMonth() + 1;
+                var d = date.getDate() + Number(req.query.day);
+                var h = date.getHours();
+                var mi = date.getMinutes();
+                var s = date.getSeconds();
+
+                // // ngay
+                if(d < 10)
+                {
+                    d = "0" + d;
+                }
+
+                // thang
+                if(m < 10)
+                {
+                    m = "0" + m;
+                }
+
+                // GIO
+                if( h < 10)
+                {
+                    h = "0" + h;
+                }
+
+
+                // //phut
+                if(mi < 10)
+                {
+                    mi = "0" + mi;
+                }
+
+                // giay
+                if(s < 10)
+                {
+                    s = "0" + s;
+                }
+
+                var data = y + "-" + m + "-" + d + " " + h + ":" + mi + ":" + "00" ;
+                String(data);
+                console.log(req.query.day);
+                console.log(d);
+                console.log(h);
+
+                const entity = {
+                    account_id: req.query.id,
+                    account_status: 2,
+                    account_date: data,
+                };
+
+                await vipModel.patch(entity);
+
+                res.redirect('/admin/vip-giahan');
+            }
+            else{
+                res.redirect('/index')
+            }
+        }
+        else{
+            res.redirect('/index')
+        }
+    },
+
+    indexphancong: async function(req, res)
+    {
+        if(req.session.isAuthenticated )
+        {
+            if(req.session.authUser.account_level == 5)
+            {
+                const result = await adminModel.getaccountediter();
+                res.render('admin/phancong', {page: 1, result: result});
+            }
+            else{
+                res.redirect('/index')
+            }
+        }
+        else{
+            res.redirect('/index')
+        }
+    },
+    indexdoichuyenmuc: async function(req, res)
+    {
+        if(req.session.isAuthenticated )
+        {
+            if(req.session.authUser.account_level == 5)
+            {
+                const result = await adminModel.getaccounteditersingle(req.query.id);
+                const result1 = await adminModel.getchuyenmuc();
+
+                const entity = {
+                    account_id: result[0].account_id,
+                    account_email: result[0].account_email,
+                    account_name: result[0].account_name,
+                    category_name: result[0].category_name,
+                }
+                console.log(entity);
+                console.log(result1);
+                res.render('admin/indexeditchuyenmuc', {page: 1, result: entity, result1: result1});
+            }
+            else{
+                res.redirect('/index')
+            }
+        }
+        else{
+            res.redirect('/index')
+        }
+    },
+    xlindexdoichuyenmuc: async function(req, res)
+    {
+        if(req.session.isAuthenticated )
+        {
+            if(req.session.authUser.account_level == 5)
+            {
+                const entity = {
+                    account_id: req.query.id,
+                    cate_id: req.query.cate,
+                }
+                await adminModel.patchcate(entity);
+                res.redirect('/admin/vip-phancong');
+            }
+            else{
+                res.redirect('/index')
+            }
+        }
+        else{
+            res.redirect('/index')
+        }
+    },
 };

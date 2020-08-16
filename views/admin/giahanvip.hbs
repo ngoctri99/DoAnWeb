@@ -1,4 +1,4 @@
-﻿<!--A Design by W3layouts
+<!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 
 <head>
-    <title>Trang quản trị</title>
+    <title>Danh sách tài khoản mua vip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -22,24 +22,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
     </script>
     <!-- bootstrap-css -->
-    <link rel="stylesheet" href="../admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- //bootstrap-css -->
     <!-- Custom CSS -->
-    <link href="../admin/css/style.css" rel='stylesheet' type='text/css' />
-    <link href="../admin/css/style-responsive.css" rel="stylesheet" />
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/style-responsive.css" rel="stylesheet" />
     <!-- font CSS -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="../admin/css/font.css" type="text/css" />
-    <link href="../admin/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="../admin/css/morris.css" type="text/css" />
+    <link rel="stylesheet" href="css/font.css" type="text/css" />
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/morris.css" type="text/css" />
     <!-- calendar -->
-    <link rel="stylesheet" href="../admin/css/monthly.css">
+    <link rel="stylesheet" href="css/monthly.css">
     <!-- //calendar -->
     <!-- //font-awesome icons -->
-    <script src="../admin/js/jquery2.0.3.min.js"></script>
-    <script src="../admin/js/raphael-min.js"></script>
-    <script src="../admin/js/morris.js"></script>
+    <script src="js/jquery2.0.3.min.js"></script>
+    <script src="js/raphael-min.js"></script>
+    <script src="js/morris.js"></script>
 </head>
 
 <body>
@@ -47,9 +47,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--header start-->
         <header class="header fixed-top clearfix">
             <div class="brand">
-                <a href="/admin" class="logo">
-        Editer
-    </a>
+                <a href="/admin/vip" class="logo">
+                    Admin
+                </a>
             </div>
             <div class="top-nav clearfix">
                 <!--search & user info start-->
@@ -84,16 +84,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="leftside-navigation">
                     <ul class="sidebar-menu" id="nav-accordion">
                         <li>
-                            <a class="active" href="/admin">
+                            <a class="active" href="/admin/vip">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Trang Chủ</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="/admin/editer">
+                            <a href="/admin/vip-editer">
                                 <i class="fa fa-th"></i>
                                 <span>Bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/vip-user">
+                                <i class="fa fa-th"></i>
+                                <span>Người dùng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/vip-giahan">
+                                <i class="fa fa-th"></i>
+                                <span>Gia hạn đọc giả vip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/vip-phancong">
+                                <i class="fa fa-th"></i>
+                                <span>Phân công cho editer</span>
                             </a>
                         </li>
                     </ul>
@@ -105,9 +123,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-                <!-- //market-->
-                <h1>Đây là trang Editer</h1>
-                <!-- //market-->
+                <!-- Danh mục  -->
+                <div class="table-agile-info">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Danh sách tài khoản mua vip
+                        </div>
+                        <div class="row w3-res-tb">
+                            <div class="col-sm-5 m-b-xs">
+                            </div>
+                            <div class="col-sm-4">
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped b-t b-light">
+                                <thead>
+                                    <tr>
+                                        <th>id account</th>
+                                        <th>Tên tài khoản</th>
+                                        <th>Số ngày muốn gia hạn</th>
+                                        <th>Duyệt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each result}}
+                                        <tr>
+                                        <td>{{account_id}}</td>
+                                        <td>{{account_name}}</td>
+                                        <td>{{account_dateVip}}</td>
+                                        <td>{{noidung}}</td>
+                                        {{#if stt }}
+                                            <td>
+                                            </td>
+                                        {{else}}
+                                            <td>
+                                                <button><a href="/admin/vip-giahan-duyet?id={{account_id}}&day={{account_dateVip}}">Duyệt</a></button>
+                                            </td>
+                                        {{/if}}
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="panel-footer">
+                            <div class="row">
+
+                                <div class="col-sm-5 text-center">
+                                    <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                                </div>
+                                <div class="col-sm-7 text-right text-center-xs">
+                                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                                        <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
+                                        <li><a href="">1</a></li>
+                                        <li><a href="">2</a></li>
+                                        <li><a href="">3</a></li>
+                                        <li><a href="">4</a></li>
+                                        <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                    <!-- button add category -->
+                </div>
+                </div>
             </section>
             <!-- footer -->
             <div class="footer">
@@ -219,7 +304,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!-- calendar -->
-    <script type="text/javascript" src="../admin/js/monthly.js"></script>
+    <script type="text/javascript" src="js/monthly.js"></script>
     <script type="text/javascript">
         $(window).load(function() {
 

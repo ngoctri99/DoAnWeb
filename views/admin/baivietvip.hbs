@@ -46,13 +46,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <section id="container">
         <!--header start-->
         <header class="header fixed-top clearfix">
-            <!--logo start-->
             <div class="brand">
-                <a href="/admin" class="logo">
-        Editer
-    </a>
+                <a href="/admin/vip" class="logo">
+                    Admin
+                </a>
             </div>
-            <!--logo end-->
             <div class="top-nav clearfix">
                 <!--search & user info start-->
                 <ul class="nav pull-right top-menu">
@@ -61,14 +59,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <!-- user login dropdown start-->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="images/2.png">
-                            <span class="username">John Doe</span>
+                            <span class="username">admin</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-
-                            <li><a href="/account/logout"><i class="fa fa-key"></i> Đăng Xuất</a></li>
+                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                            <li><a href="/account/logout"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -85,15 +84,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="leftside-navigation">
                     <ul class="sidebar-menu" id="nav-accordion">
                         <li>
-                            <a class="active" href="/admin">
+                            <a class="active" href="/admin/vip">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Trang Chủ</span>
                             </a>
                         </li>
+
                         <li>
-                            <a href="/admin/editer">
+                            <a href="/admin/vip-editer">
                                 <i class="fa fa-th"></i>
                                 <span>Bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/vip-user">
+                                <i class="fa fa-th"></i>
+                                <span>Người dùng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/vip-giahan">
+                                <i class="fa fa-th"></i>
+                                <span>Gia hạn đọc giả vip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/vip-phancong">
+                                <i class="fa fa-th"></i>
+                                <span>Phân công cho editer</span>
                             </a>
                         </li>
                     </ul>
@@ -113,20 +131,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="row w3-res-tb">
                             <div class="col-sm-5 m-b-xs">
-                                <select class="input-sm form-control w-sm inline v-middle">
-                                    <option value="0">Tất Cả</option>
-                                    <option value="1">Từ A->Z</option>
-                                    <option value="2">Từ Z->A</option>
-                  </select>
-                                <button class="btn btn-sm btn-default">Lọc</button>
                             </div>
                             <div class="col-sm-4">
                             </div>
                             <div class="col-sm-3">
                                 <div class="input-group">
-                                    <input type="text" class="input-sm form-control" placeholder="Search">
                                     <span class="input-group-btn">
-                      <button class="btn btn-sm btn-default" type="button">Go!</button>
                     </span>
                                 </div>
                             </div>
@@ -184,9 +194,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </footer>
                     </div>
                     <!-- button add category -->
-                    <div class="btn-add">
-                        <button class="btn btn-success">Thêm bài viết</button>
-                    </div>
                 </div>
                 </div>
             </section>
