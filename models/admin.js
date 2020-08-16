@@ -21,4 +21,11 @@ module.exports = {
     delete entity.post_id;
     return db.patch('posts', entity, condition);
   },
+  postsvip: function()
+  {
+    return db.load(`select *
+    from posts p, post_status ps, categories c,  account ac
+    where p.post_cate = c.category_id and p.post_idaccount = ac.account_id and ps.stt = p.post_status
+    order by stt ASC `)
+  },
 };
