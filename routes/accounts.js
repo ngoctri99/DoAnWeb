@@ -26,10 +26,4 @@ router.post('/quenpass', accountController.xlindexquenpass);
 router.get('/xlquenpass', accountController.indexxlquenpass);
 router.post('/xlquenpass', accountController.xlquenpass);
 
-router.get('/baivietcuaminh', accountController.indexbaivietcuaminh);
-
-router.get('/suabaiviet', accountController.suabaiviet);
-router.post('/suabaiviet', accountController.xlsuabaiviet);
-
-
 module.exports = router;

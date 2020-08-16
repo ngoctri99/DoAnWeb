@@ -15,10 +15,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="tag-content">
-                                        <a href="">từ khóa</a>
+                                        Từ khóa:
+                                        {{#each page.hastags}}
+                                            <a href="../hastag?name={{hastag}}">#{{hastag}}</a>
+                                        {{/each}}
                                     </div>
                                 </div>
                             </div>
+                            <hr>
                             {{!-- ------------------------------------------ --}}
                             <div class="row">
                                 <div class="col-md-12">
@@ -29,7 +33,7 @@
                                             <div class="col-md-6">
                                                 <div class="img-relate"></div>
                                                 <div class="content-relate">
-                                                    <a href="">{{post_name}}</a>
+                                                    <ol> <a href="../post/post={{post_id}}">{{post_name}}</a></ol>
                                                 </div>
                                             </div>
                                             {{/each}}
