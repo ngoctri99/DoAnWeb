@@ -52,11 +52,6 @@ module.exports = {
           account_id: 1,
           account_status: 2,
           account_date: data,
-          year: y,
-          month: m,
-          day: d,
-          hour: h,
-          minute: mi,
         };
 
         await vipModels.patch(entity);
@@ -72,7 +67,7 @@ module.exports = {
 
         const entity = {
             account_id: req.session.authUser.account_id,
-            account_status: 2,
+            account_status: 1,
             account_dateVip: req.body.day,
         };
             console.log(req.body.day);
@@ -112,7 +107,7 @@ module.exports = {
 
         timediff[0].timediff.slice(0,1);
 
-        if(timediff[0].timediff.slice(0,1) == '-')
+        if(timediff[0].timediff.slice(0,1) == '-' && result[0].account_status == 2)
         {
             const entity = {
                 account_id: req.session.authUser.account_id,
@@ -129,7 +124,7 @@ module.exports = {
         }
 
 
-        if (result[0]== null){
+        if(result[0]== null){
             res.render('vip/indexvip', { result: 0});
         }
         else {

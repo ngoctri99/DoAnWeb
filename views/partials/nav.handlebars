@@ -9,28 +9,32 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                        <div class="menu">
-                            <ul class="main-menu">
-                                <li><a href="/">Trang chủ</a></li>
-
+                <div class="menu">
+                    <ul class="main-menu">
+                        <li><a href="/">Home</a></li>
+                        <li>
+                            <a href="">product</a>
+                            <ul class="sub-menu">
                                 {{#each this.page.categories}}
-                                <li>
-                                <a href="/category?id={{categoryParent.category_id}}&name={{categoryParent.category_slug}}">{{categoryParent.category_name}}</a>
+                                        <li>
+                                            <a href="/category?id={{categoryParent.category_id}}&name={{categoryParent.category_slug}}">{{categoryParent.category_name}}</a>
                                             {{#if empty}}
-                                            
-                                            <ul class="sub-menu">
+                                            <ul class="sub-menu-2">
                                                     {{#each categoriesSub}}  
                                                     <li><a href="/category?id={{category_id}}&name={{category_slug}}">{{category_name}}</a></li><br>
                                                     {{/each}}
                                             </ul>
-                                           
                                             {{/if}}
-                                    </li>
+                                        </li><br>
                                 {{/each}}
                             </ul>
-
-                        </div>
-                    </div>
+                        </li>
+                        <li><a href="">contact</a></li>
+                        <li><a href="">sevices</a></li>
+                        <li><a href="">about</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="search-login">
                     <div class="search">

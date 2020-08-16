@@ -12,9 +12,9 @@ module.exports = {
 
     if(req.session.isAuthenticated)
     {
-      if(req.session.authUser.account_id == 3)
+      if(req.session.authUser.account_level == 3)
       {
-        const result = await postsModels.categori();
+        const result = await postsModels.categori(req.session.authUser.account_id);
         res.render('posts/upload', { categori: result });
       }
       else{
@@ -30,6 +30,7 @@ module.exports = {
 
     const entity={
       post_decs: req.body.fulldes,
+      post_idaccount: req.session.authUser.account_id,
       post_name: req.body.txtTieude,
       post_tag: req.body.txtTag,
       post_meta: req.body.txtTomtat,
@@ -102,24 +103,11 @@ module.exports = {
   var list_post_hot = await postsModels.getHot(limitPostHot);
   //gae comment
     var postComment = await commentModels.loadComment(entity.post_id);
-   
-
     var pagePost = [];
     pagePost.post = post[0];
     pagePost.postConnection = postConnection;
     pagePost.postComment = postComment;
     pagePost.categories = list_cate;
-     //get hastag
-    var hastag = post[0].post_tag;
-    pagePost.hastags = [];
-    var token  = hastag.split("#");
-    for(var i = 1; i < token.length; i++){
-      var item = {
-        hastag: token[i]
-      }
-      pagePost.hastags.push(item);
-    }
-    
 
     if(post[0].post_level == 2)
     {
@@ -135,7 +123,7 @@ module.exports = {
             res.redirect('/vip/kt');
           }
           else {
-		await postsModels.updateViews(entity.post_id);
+		  await postsModels.updateViews(entity.post_id);
             res.render('posts/post',{page:pagePost});
           }
         }

@@ -47,4 +47,21 @@ module.exports = {
     getpassword: function(entity){
         return db.load(`select account_password from account where account_id = '${entity}'`)
     },
+    indexbaivietcuaminh: function(entity)
+    {
+        return db.load(`select p.post_name as post_name, p.post_id as post_id, p.post_status as post_status,pl.stt as stt, pl.noidung as noidung
+        from posts p, post_status pl
+        where p.post_status = pl.stt and  p.post_idaccount = ${entity}`)
+    },
+    indexsuabaiviet: function(entity)
+    {
+        return db.load(`select * from posts where post_id = ${entity}`);
+    },
+    patch1: function (entity) {
+        const condition = {
+          post_id: entity.post_id,
+        }
+        delete entity.post_id;
+        return db.patch('posts', entity, condition);
+    },
 };

@@ -219,7 +219,7 @@ a {
 .bn-right-cnt-bottom-right img,
 .bn-right-cnt-bottom-left img {
     width: 70%;
-    min-height: 70%;
+    height: 70%;
 }
 
 .content {
@@ -236,20 +236,20 @@ a {
 
 .content .menu-cnt {
     width: 100%;
-    min-height: 50px;
+    height: 50px;
     /* background: rgb(4, 36, 77); */
 }
 
 .content .menu-cnt .main-menu-cnt {
-    width: 50%;
-    min-height: 100%;
+    width: 30%;
+    height: 100%;
     background: #000;
     float: left;
 }
 
-.content .sub-menu-cnt {
-    width: 100%;
-    min-height: 100%;
+.content .menu-cnt .sub-menu-cnt {
+    width: 70%;
+    height: 100%;
     /* background: rgb(241, 147, 6); */
     float: right;
     border-bottom: 2px solid #000;
@@ -258,51 +258,54 @@ a {
     line-height: 50px;
 }
 
-.content .sub-menu-cnt a {
+.content .menu-cnt .sub-menu-cnt li {
+    display: inline;
+    padding: 0px 10px;
+}
+
+.content .menu-cnt .sub-menu-cnt li a {
     text-decoration: none;
-    font-size: 1.0em;
-    padding: 5px;
+    font-size: 16px;
 }
 
 .posts {
     max-width: 100%;
-    min-height: 100px;
+    min-height: 300px;
     /* background: rgb(119, 140, 231); */
 }
 
 .posts .img {
-    max-width: 100px;
-    min-height: 100px;
+    max-width: 300px;
+    height: 100px;
     margin: 10px 0px;
 }
 
 .posts .img img {
-    width: 100px;
-    min-height: 100px;
+    width: 250px;
+    height: 150px;
 }
 
 .posts .decs {
     width: 100%;
-    min-height: 100px;
+    min-height: 150px;
     /* background: rgb(11, 56, 41); */
     margin: 10px 0px;
 }
 
 .posts .decs a {
     text-decoration: none;
-    font-size: 1.0em;
 }
 
 .content .hig {
     width: 100%;
-    min-height: 300px;
+    min-height: 400px;
     /* background: rgb(7, 226, 55); */
     box-shadow: 0px 0px 3px 3px rgba(173, 170, 170, 0.952);
 }
 
 .content .hig .name-hig {
     width: 100%;
-    min-height: 50px;
+    height: 50px;
     background: rgb(248, 9, 9);
 }
 
@@ -328,58 +331,21 @@ a {
 
 .posts-hig .img {
     width: 100%;
-    min-height: 80px;
+    height: 120px;
     background: rgb(46, 3, 32);
     margin: 10px 0px;
 }
 
 .posts-hig .img img {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
 }
 
 .posts-hig .decs {
     width: 100%;
-    min-height: 120px;
+    height: 120px;
     /* background: rgb(11, 56, 41); */
     margin: 10px 0px;
-}
-
-.views-post {
-    width: 100%;
-    min-height: 300px;
-    /* background: rgb(7, 226, 55); */
-    box-shadow: 0px 0px 3px 3px rgba(173, 170, 170, 0.952);
-    margin: 10px 0px;
-}
-
-.views-post .img {
-    width: 100%;
-    min-height: 80px;
-    background: rgb(46, 3, 32);
-    margin: 10px 0px;
-}
-
-.views-post img {
-    width: 100%;
-    min-height: 100%;
-}
-
-.views-post .decs {
-    width: 100%;
-    min-height: 120px;
-    /* background: rgb(11, 56, 41); */
-    margin: 10px 0px;
-}
-
-.views-post h4 {
-    line-height: 55px;
-    color: aliceblue;
-    text-align: center;
-    width: 100%;
-    min-height: 50px;
-    background: rgb(248, 9, 9);
-    margin: 0px 15px;
 }
 
 .footer {
@@ -428,20 +394,20 @@ a {
 @media only screen and (max-width: 760px) {
     .header {
         height: 50px;
-        min-width: 100%;
+        width: 100%;
     }
     .menu-nav {
         display: block;
         width: 100%;
-        min-height: 50px;
+        height: 50px;
     }
     .menu-nav .icon-menu {
         padding: 5px;
     }
     .menu-nav .icon-menu div {
         display: block;
-        min-width: 35px;
-        min-height: 3px;
+        width: 35px;
+        height: 3px;
         background-color: #fff;
         margin: 6px 0px;
         margin-left: 20px;
@@ -539,20 +505,4 @@ a {
 
 .show {
     display: block !important;
-}
-
-.has-search .form-control {
-    padding-left: 2.375rem;
-}
-
-.has-search .form-control-feedback {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    width: 2.375rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    pointer-events: none;
-    color: #aaa;
 }
