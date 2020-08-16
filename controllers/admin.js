@@ -256,7 +256,11 @@ module.exports = {
                     account_status: 2,
                     account_date: data,
                 };
-
+                const entity1 = {
+                    account_id: req.query.id,
+                    account_level: 2,
+                };
+                await vipModel.patch1(entity1);
                 await vipModel.patch(entity);
 
                 res.redirect('/admin/vip-giahan');

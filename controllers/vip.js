@@ -72,7 +72,7 @@ module.exports = {
 
         const entity = {
             account_id: req.session.authUser.account_id,
-            account_status: 2,
+            account_status: 1,
             account_dateVip: req.body.day,
         };
             console.log(req.body.day);
@@ -112,7 +112,7 @@ module.exports = {
 
         timediff[0].timediff.slice(0,1);
 
-        if(timediff[0].timediff.slice(0,1) == '-')
+        if(timediff[0].timediff.slice(0,1) == '-'  && result[0].account_level == 2)
         {
             const entity = {
                 account_id: req.session.authUser.account_id,

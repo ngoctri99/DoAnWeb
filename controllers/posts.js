@@ -123,7 +123,7 @@ module.exports = {
 
     if(post[0].post_level == 2)
     {
-      if(req.session.isAuthenticated != null)
+      if(req.session.isAuthenticated)
       {
         if(req.session.authUser.account_level == 2)
         {
@@ -131,11 +131,12 @@ module.exports = {
 
           if(timediff[0].timediff.slice(0,1) == '-')
           {
-            vipModels.updatehethang(req, res);
+            console.log(timediff[0].timediff.slice(0,1))
+            //vipModels.updatehethang(req, res);
             res.redirect('/vip/kt');
           }
           else {
-		await postsModels.updateViews(entity.post_id);
+		        await postsModels.updateViews(entity.post_id);
             res.render('posts/post',{page:pagePost});
           }
         }
