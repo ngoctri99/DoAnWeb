@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>id bài viết</th>
+            <th>tên bài viết</th>
+            <th>Trạng thái</th>
+            <th>sửa</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this.result}}
+            <tr>
+            <td scope="row">{{post.post_id}}</td>
+            <td>{{post.post_name}}</td>
+            <td>{{post.noidung}}</td>
+            <td>
+                {{#if stt}}
+                    <a href="/account/suabaiviet?id={{post.post_id}}">sửa</a>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

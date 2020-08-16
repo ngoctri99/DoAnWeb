@@ -29,6 +29,7 @@ module.exports = {
 
     const entity={
       post_decs: req.body.fulldes,
+      post_idaccount: req.session.authUser.account_id,
       post_name: req.body.txtTieude,
       post_tag: req.body.txtTag,
       post_meta: req.body.txtTomtat,
@@ -131,7 +132,7 @@ module.exports = {
             res.redirect('/vip/kt');
           }
           else {
-		await postsModels.updateViews(entity.post_id);
+		  await postsModels.updateViews(entity.post_id);
             res.render('posts/post',{page:pagePost});
           }
         }

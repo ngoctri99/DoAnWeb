@@ -2,6 +2,9 @@ var account = require('../models/accounts');
 const bcrypt = require('bcryptjs');
 const restrict = require('../middlewares/auth.mdw');
 var nodemailer =  require('nodemailer');
+const postsModels = require('../models/posts')
+const slug = require('slug');
+
 var OTP = 0;
 
 module.exports = {
@@ -219,6 +222,54 @@ module.exports = {
             {
                 res.render('account/indexxlquenpass', {result: 1})
             }
+
+    },
+
+    indexbaivietcuaminh: async function(req, res)
+    {
+        const entity = {
+            post_idaccount: req.session.authUser.account_id,
+        }
+        const result = await account.indexbaivietcuaminh(entity.post_idaccount);
+
+        var kq =[];
+
+
+        for(var i = 0; i < result.length; i++)
+        {
+            var item = {
+                post: result[i],
+                stt: (result[i].stt == 0 || result[i].stt == 2)?1:0
+            };
+            kq.push(item);
+        }
+        res.render('account/indexbaivietcuaminh', {result: kq});
+    },
+
+    suabaiviet:async function(req, res)
+    {
+        const result = await account.indexsuabaiviet(req.query.id);
+        const result1 = await postsModels.categori();
+        res.render('account/indexsuabaiviet', {result: result[0], cate: result1});
+    },
+
+    xlsuabaiviet:async function(req, res)
+    {
+        const entity={
+            post_id: req.query.id,
+            post_decs: req.body.fulldes,
+            post_name: req.body.txtTieude,
+            post_tag: req.body.txtTag,
+            post_meta: req.body.txtTomtat,
+            post_cate: req.body.txtChuyenmuc,
+            post_status:0,
+            post_slug: slug(req.body.txtTieude),
+          };
+
+        console.log(entity.post_id);
+        await account.patch1(entity);
+
+        res.redirect('/account/baivietcuaminh');
 
     }
 };
