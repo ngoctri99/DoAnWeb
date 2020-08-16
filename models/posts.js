@@ -44,9 +44,10 @@ module.exports = {
       db.add(TBL_POSTS,entity);
     },
 
-    categori: function()
+    categori: function(entity)
     {
-      return db.load(`select * from categories where category_status = 1`);
+      return db.load(`select * from categories ca, account a, account_cate at
+      where ca.category_status = 1 and ca.category_cate = at.cate_id and a.account_id = at.account_id and a.account_id = ${entity}`);
     },
 
     getPostWithCategory: function(categoriesParent = 0,categoriesSub = 0){

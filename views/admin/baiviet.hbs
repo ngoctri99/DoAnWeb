@@ -48,12 +48,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <header class="header fixed-top clearfix">
             <!--logo start-->
             <div class="brand">
-                <a href="index.admin.html" class="logo">
-        VISITORS
+                <a href="/admin" class="logo">
+        Editer
     </a>
-                <div class="sidebar-toggle-box">
-                    <div class="fa fa-bars"></div>
-                </div>
             </div>
             <!--logo end-->
             <div class="top-nav clearfix">
@@ -64,14 +61,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <!-- user login dropdown start-->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="">
                             <img alt="" src="images/2.png">
                             <span class="username">John Doe</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
 
-                            <li><a href="login.admin.html"><i class="fa fa-key"></i> Đăng Xuất</a></li>
+                            <li><a href="/account/logout"><i class="fa fa-key"></i> Đăng Xuất</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -88,47 +85,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="leftside-navigation">
                     <ul class="sidebar-menu" id="nav-accordion">
                         <li>
-                            <a class="active" href="index.admin.html">
+                            <a class="active" href="/admin">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Trang Chủ</span>
                             </a>
                         </li>
-
                         <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-book"></i>
-                                <span>Danh mục bài viết</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="chuyenmuc.admin.html">
-                                <i class="fa fa-bullhorn"></i>
-                                <span>Chuyên mục bài viết</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="baiviet.admin.html">
+                            <a href="/admin/editer">
                                 <i class="fa fa-th"></i>
                                 <span>Bài viết</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="taikhoan.admin.html">
-                                <i class="fa fa-tasks"></i>
-                                <span>Tài khoản</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="duyettaikhoan.admin.html">
-                                <i class="fa fa-user"></i>
-                                <span>Duyệt Tài Khoản</span>
-                            </a>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="fa fa-envelope"></i>
-                                    <span>Bình luận </span>
-                                </a>
-                            </li>
                     </ul>
                 </div>
                 <!-- sidebar menu end-->
@@ -168,36 +135,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <table class="table table-striped b-t b-light">
                                 <thead>
                                     <tr>
-                                        <th style="width:20px;">
-                                            <label class="i-checks m-b-none">
-                          
-                        </label>
-                                        </th>
                                         <th>Chuyên Mục</th>
-                                        <th>Doanh mục</th>
                                         <th>Tiêu Đề</th>
 
                                         <th>Người Thực hiện</th>
                                         <th>Trạng Thái</th>
-                                        <th></th>
-                                        <th style="width:30px;"></th>
+                                        <th>Duyệt bài viết</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                                        <td>Chuyên mục bài viết</td>
-                                        <td>Doanh mục bài viết</td>
-                                        <td>Tiêu Đề</td>
-                                        <td><span class="text-ellipsis">Thành phố cô đơn</span></td>
-                                        <td><span class="text-ellipsis">Chờ Duyệt</span></td>
-
-                                        <td>
-
-                                            <a href="./duyetbaiviet.admin.html"> <i class="fa fa-check text-success text-active" style="margin: 5px;"></i></a>
-                                            <a href=""><i class="fa fa-times text-danger text"></i></a>
-                                        </td>
+                                    {{#each result}}
+                                        <tr>
+                                        <td>{{category_name}}</td>
+                                        <td>{{post_name}}</td>
+                                        <td><span class="text-ellipsis">{{account_name}}</span></td>
+                                        <td><span class="text-ellipsis">{{noidung}}</span></td>
+                                        {{#if stt }}
+                                            <td>
+                                            </td>
+                                        {{else}}
+                                            <td>
+                                                <button><a href="/admin/editer/duyet?id={{post_id}}&status=1">Duyệt</a></button>
+                                                <button><a href="/admin/editer/duyet?id={{post_id}}&status=2">Từ chối</a></button>
+                                            </td>
+                                        {{/if}}
                                     </tr>
+                                    {{/each}}
                                 </tbody>
                             </table>
                         </div>

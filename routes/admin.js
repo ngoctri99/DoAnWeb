@@ -7,5 +7,9 @@ var router = express.Router();
 //index
 router.get('/',  adminController.index);
 
+router.get('/editer', adminController.indexediter);
+router.get('/editer/duyet', adminController.editerduyet);
+
+
 
 module.exports = router;

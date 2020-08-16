@@ -32,11 +32,18 @@ module.exports = {
 
             console.log(req.session.authUser);
 
-            if(req.session.authUser.account_level != 5)
-
+            if(req.session.authUser.account_level < 4)
+            {
                 res.redirect('/index');
+            }
+            else if(req.session.authUser.account_level >= 4 && req.session.authUser.account_level < 5)
+            {
+                res.redirect('/admin');
+            }
             else if(req.session.authUser.account_level == 5)
-                res.redirect('/admin')
+            {
+                res.redirect('/adminvip');
+            }
         }
     },
     registerIndex: function(req, res, next) {
@@ -85,7 +92,7 @@ module.exports = {
             res.redirect('/account');
         }
         else{
-            if(req.session.authUser.account_id == 3){
+            if(req.session.authUser.account_level == 3){
                 res.render('account/info', {account_level: 1});
             }
             else{

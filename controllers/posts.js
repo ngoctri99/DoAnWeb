@@ -12,9 +12,9 @@ module.exports = {
 
     if(req.session.isAuthenticated)
     {
-      if(req.session.authUser.account_id == 3)
+      if(req.session.authUser.account_level == 3)
       {
-        const result = await postsModels.categori();
+        const result = await postsModels.categori(req.session.authUser.account_id);
         res.render('posts/upload', { categori: result });
       }
       else{

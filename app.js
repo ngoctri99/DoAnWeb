@@ -12,6 +12,7 @@ var pdfRouter = require('./routes/pdf');
 var vipRouter = require('./routes/vip');
 var categoriesRouter = require('./routes/categories');
 var adminRouter = require('./routes/admin');
+var adminvipRouter = require('./routes/adminvip')
 
 var app = express();
 app.set('view engine', 'hbs');
@@ -46,6 +47,7 @@ app.use('/pdf', pdfRouter);
 app.use('/vip', vipRouter);
 app.use('/category',categoriesRouter);
 app.use('/admin', adminRouter);
+app.use('/adminvip', adminvipRouter);
 
 
 // catch 404 and forward to error handler

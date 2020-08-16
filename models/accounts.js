@@ -50,7 +50,8 @@ module.exports = {
     indexbaivietcuaminh: function(entity)
     {
         return db.load(`select p.post_name as post_name, p.post_id as post_id, p.post_status as post_status,pl.stt as stt, pl.noidung as noidung
-        from posts p, post_status pl where p.post_status = pl.stt and  p.post_idaccount = ${entity}`)
+        from posts p, post_status pl
+        where p.post_status = pl.stt and  p.post_idaccount = ${entity}`)
     },
     indexsuabaiviet: function(entity)
     {
