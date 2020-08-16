@@ -14,12 +14,18 @@
   <link rel="stylesheet" href="../resourses/css/login.css">
   <link rel="stylesheet" href="../resourses/css/SignUp.css">
   <link rel="stylesheet" href="../resourses/css/post.css">
+  
 </head>
 
 <body>
   <div class="wrapper">
 
-    {{!-- Menu  --}}
+    {{#if page}}
+  
+      {{{body}}}
+    
+    {{else}}
+{{!-- Menu  --}}
     {{> nav}}
 
     {{!-- Content --}}
@@ -27,6 +33,8 @@
 
     {{!-- Footer  --}}
     {{> footer}}
+    {{/if}}
+    
 
   </div>
 

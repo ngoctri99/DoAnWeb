@@ -3,6 +3,7 @@ const vipModels = require('../models/vip');
 const multer = require('multer');
 const slug = require('slug');
 var commentModels = require('../models/comments');
+var categoriesController = require('../controllers/categories');
 var categoriesModel = require('../models/categories');
 var limitPostHot = 5;
 module.exports = {
@@ -81,7 +82,7 @@ module.exports = {
     const upload = multer({ storage });
     upload.array('fullimg', 3)(req, res, function (err) {
       if (!err){
-        res.render('posts/upload');
+        res.redirect('up');
       }
       else res.send('err');
     })
@@ -96,17 +97,7 @@ module.exports = {
 	//get post connection moi nhat
     var postConnection = await postsModels.getNumbers(0,post["post_cate"],false,true,4);
     //get comment
-    var list_cate = [];
-  var list_cateParent = await categoriesModel.getAllParent();
-  for(var i = 0; i < list_cateParent.length; i++){
-    var list_cateSub = await categoriesModel.getAllSub(list_cateParent[i].category_id);
-      var item = {
-        categoryParent: list_cateParent[i],
-        categoriesSub: list_cateSub,
-        empty: list_cateSub.length !== 0
-    };
-      list_cate.push(item);
-    }
+    var list_cate = await categoriesController.loadCategories();
     //get post hot
   var list_post_hot = await postsModels.getHot(limitPostHot);
   //gae comment
@@ -148,9 +139,9 @@ module.exports = {
     }
     else if(post[0].post_level != 2)
     {
-	await postsModels.updateViews(entity.post_id);
+	    await postsModels.updateViews(entity.post_id);
       res.render('posts/post',{page:pagePost});
     }
   },
-
+ 
 };

@@ -28,7 +28,12 @@ module.exports = {
             req.session.authUser = result[0];
 
             console.log(req.session.authUser);
-            res.redirect('../index');
+
+            if(req.session.authUser.account_level != 5)
+
+                res.redirect('/index');
+            else if(req.session.authUser.account_level == 5)
+                res.redirect('/admin')
         }
     },
     registerIndex: function(req, res, next) {

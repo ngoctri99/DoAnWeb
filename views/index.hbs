@@ -14,13 +14,13 @@
                                             </h4>
                                         </div>
                                         <ul class="sub-menu-cnt">
-                                            <li><a href="/index?page={{this.page.first}}">First</a></li>
-                                            <li><a href="/index?page={{this.page.previous}}">Previous</a></li>
+                                            <li><a href="{{this.page.url}}page={{this.page.first}}">First</a></li>
+                                            <li><a href="{{this.page.url}}page={{this.page.previous}}">Previous</a></li>
                                             {{#each this.page.count_items}}
-                                                <li><a href="/index?page={{id}}">page {{id}}</a></li>
+                                                <li><a href="{{../page.url}}page={{id}}">page {{id}}</a></li>
                                             {{/each}}
-                                            <li><a href="/index?page={{this.page.next}}">Next</a></li>
-                                            <li><a href="/index?page={{this.page.last}}">Last</a></li>
+                                            <li><a href="{{this.page.url}}page={{this.page.next}}">Next</a></li>
+                                            <li><a href="{{this.page.url}}page={{this.page.last}}">Last</a></li>
                                         </ul>
                                     </div>
                                 </div>

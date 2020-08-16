@@ -1,24 +1,35 @@
 var postsModel = require('../models/posts');
- var limit = 3;
- var limitPostHot = 5;
 var categoriesModel = require('../models/categories');
+var indexController = require('./indexs');
+
 module.exports={
+  loadCategories: async function(){
+    var list_cate = [];
+    var list_cateParent = await categoriesModel.getAllParent();
+    for(var i = 0; i < list_cateParent.length; i++){
+      var list_cateSub = await categoriesModel.getAllSub(list_cateParent[i].category_id);
+        var item = {
+          categoryParent: list_cateParent[i],
+          categoriesSub: list_cateSub,
+          empty: list_cateSub.length !== 0
+      };
+        list_cate.push(item);
+      }
+      return list_cate;
+    },
     searchCategory: async function(req, res, next) {
-        var page = [];
-        var index = 0;
-        page.limit = limit+limitPostHot;
         //get category
         var list_cate = [];
-        var list_cateParent = await categoriesModel.getAllParent();
-        for(var i = 0; i < list_cateParent.length; i++){
-          var list_cateSub = await categoriesModel.getAllSub(list_cateParent[i].category_id);
-            var item = {
-              categoryParent: list_cateParent[i],
-              categoriesSub: list_cateSub,
-              empty: list_cateSub.length !== 0
-          };
-            list_cate.push(item);
-          }
+    var list_cateParent = await categoriesModel.getAllParent();
+    for(var i = 0; i < list_cateParent.length; i++){
+      var list_cateSub = await categoriesModel.getAllSub(list_cateParent[i].category_id);
+        var item = {
+          categoryParent: list_cateParent[i],
+          categoriesSub: list_cateSub,
+          empty: list_cateSub.length !== 0
+      };
+        list_cate.push(item);
+      }
         //get all post
         //kiem tra category cos phai Parent
         var checkParent = categoriesModel.checkParent(req.query.id);
@@ -28,49 +39,11 @@ module.exports={
           var list_posts = await postsModel.getPostWithCategory(req.query.id);
         }
         //get post hot
-        var list_post_hot = await postsModel.getHot(limitPostHot);
-       
-        //set count page
-        page.pageCurrent = req.query.page || 1;
-      
-        var start = (page.pageCurrent - 1)*limit;
-        var end = page.pageCurrent * limit
-          //count page
-        page.count_items = [];
-        
-        var count = Math.ceil(list_posts.length/limit);
-        for(var i = 1; i <= count; i++){
-          var item = {'id':i};
-          page.count_items.push(item);
-        }
-        //list post
-        page.posts = [];
-        var newListPost = list_posts.slice(start,end);
-        for(index; index < newListPost.length; index++){
-          var item = {
-            id: index,
-            post:newListPost[index]
-          }
-          page.posts.push(item);
-        }
-        //list hot post
-        page.posts_hot = [];
-        for(var i = 0; i < list_post_hot.length ; i++){
-          var item = {
-            id: index,
-            postHot:list_post_hot[i]
-          }
-          page.posts_hot.push(item);
-          index++;
-        }
-        // page
-        page.categories = list_cate;
-        page.last = count;
-        page.first = 1;
-        page.previous = (page.pageCurrent==1)?1:page.pageCurrent--;
-        page.next = (page.pageCurrent==count)?count:page.pageCurrent++;
-      
+        var list_post_hot = await postsModel.getHot(indexController.LIMIT_POSTS_HOT);
+        var url = "/category?id="+req.query.id+"&name="+req.query.name+"&";
+        var pageCurrent = req.query.page;
+        var page = await indexController.loadPage(list_posts,indexController.LIMIT_POSTS,list_post_hot,indexController.LIMIT_POSTS_HOT,list_cate,pageCurrent,url);
         res.render('index', { page: page});
   },
- 
+  
 };
