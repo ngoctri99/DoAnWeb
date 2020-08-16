@@ -10,6 +10,12 @@ router.get('/',  adminController.index);
 router.get('/editer', adminController.indexediter);
 router.get('/editer/duyet', adminController.editerduyet);
 
+router.get('/vip',  adminController.indexvip);
+router.get('/vip-editer',  adminController.indexvipediter);
+router.get('/editer-duyet', adminController.editerduyetvip);
+
+
+
 
 
 module.exports = router;

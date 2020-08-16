@@ -42,7 +42,7 @@ module.exports = {
             }
             else if(req.session.authUser.account_level == 5)
             {
-                res.redirect('/adminvip');
+                res.redirect('/admin/vip');
             }
         }
     },
