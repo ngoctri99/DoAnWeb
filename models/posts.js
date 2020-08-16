@@ -32,7 +32,7 @@ module.exports = {
       return db.load(sql);
     },
     getHot: function(limit = 3){
-      var sql = "SELECT p1.*,c.category_name FROM (posts as p1 JOIN comments as c1 ON p1.post_id = c1.post_id) join categories c ON c.category_id = p1.post_cate and DATEDIFF( CURDATE(), p1.post_browse ) <= 7 "+
+      var sql = "SELECT p1.*,c.category_name FROM (posts as p1 JOIN comments as c1 ON p1.post_id = c1.post_id) join categories c ON c.category_id = p1.post_cate and p1.post_status = 1 and DATEDIFF( CURDATE(), p1.post_browse ) <= 7 "+
       " GROUP BY p1.post_id "+
        " ORDER BY COUNT(*) DESC, p1.post_browse DESC LIMIT 0,"+limit;
       return db.load(sql);
