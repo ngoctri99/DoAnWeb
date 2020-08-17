@@ -45,25 +45,24 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
+                                    <h4>Bình luận:</h4>
                                     <div class="commnet">
                                         {{#each page.postComment}}
                                         <div class="col-md-4">
-                                <div class="img">
-                                    <a><img src="images/{{account_image}}" alt=" " /></a>
-                                </div>
-                                    </div>
+                                            <div class="img">
+                                                <img src="images/{{account_image}}" alt=" " />
+                                            </div>
+                                        </div>
                                         <div class="col-md-7">
                                          <div class="decs">
-                                             <a>
-                                        <p>
+                                            <p>
                                             {{account_name}}: {{content}}
-                                        </p>
-                                            </a>
+                                            </p>
                                         </div>
-                                    </div>
+                                        </div>
                                     {{/each}}
-                                        </div>
                                     </div>
+                                </div>
                             </div>
                         </div>
                 </div>

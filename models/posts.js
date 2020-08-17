@@ -48,10 +48,10 @@ module.exports = {
 
     getPostWithCategory: function(categoriesParent = 0,categoriesSub = 0){
       if(categoriesParent != 0){
-        return db.load(`select * from categories c, posts p where c.category_id = p.post_cate and (c.category_id = ${categoriesParent} or c.category_cate = ${categoriesParent}) order by p.post_browse DESC `);
+        return db.load(`select * from categories c, posts p where c.category_id = p.post_cate and p.post_status = 1 and (c.category_id = ${categoriesParent} or c.category_cate = ${categoriesParent}) order by p.post_browse DESC `);
       }
       if(categoriesSub != 0){
-        return db.load(`select * from categories c, posts p where c.category_id = p.post_cate and c.category_id = ${categoriesSub} order by p.post_browse DESC`);
+        return db.load(`select * from categories c, posts p where c.category_id = p.post_cate and p.post_status = 1 and c.category_id = ${categoriesSub} order by p.post_browse DESC`);
       }
     },
 
@@ -67,6 +67,6 @@ module.exports = {
       return db.load(`SELECT DISTINCT post_cate from posts ORDER by post_browse DESC, post_views DESC LIMIT 0, ${limit}`);
     },
     getPostNewByCategory(category_id,limit =1){
-      return db.load(`SELECT p.*, c.category_name from posts p join categories c on p.post_cate = c.category_id where post_cate = ${category_id} and p.post_status = 1 ORDER by p.post_browse DESC, p.post_level DESC,p.post_views DESC LIMIT 0, ${limit}`);
+      return db.load(`SELECT p.*, c.category_name from posts p join categories c on p.post_cate = c.category_id where p.post_cate = ${category_id} and p.post_status = 1 ORDER by p.post_browse DESC, p.post_level DESC, p.post_views DESC LIMIT 0, ${limit}`);
     }
   };
