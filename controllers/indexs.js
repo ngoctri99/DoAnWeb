@@ -34,9 +34,7 @@ module.exports.loadPage = async function(posts, limitPost, postsHot,limitPostHot
   page.posts =  list_posts.slice(start,end);
   //list hot post
   page.posts_hot =list_post_hot;
-  // get post newst cua category
-  var categoriesViewMore = await postsModel.getCategoriesNewst();
-  console.log(categoriesViewMore)
+
   // page
   page.categories = list_cate;
   page.last = count;
@@ -47,6 +45,7 @@ module.exports.loadPage = async function(posts, limitPost, postsHot,limitPostHot
   page.next = (page.pageCurrent==count)?count:page.pageCurrent + 1;
   page.url = url;
   page.emptyPostView = false;
+  page.emptyPostCategoryNew = false;
   return page;
 }
 
@@ -81,6 +80,16 @@ module.exports.index = async function(req, res, next) {
   page.posts_hot = list_post_hot;
 
   page.posts_view = list_post_view;
+
+  page.posts_categories = [];
+
+   // get post newst cua category
+   var categoriesViewMore = await postsModel.getCategoriesNewst();
+   for(var i = 0 ; i < categoriesViewMore.length ; i++){
+     var item = await postsModel.getPostNewByCategory(categoriesViewMore[i].post_cate);
+     page.posts_categories.push(item[0]);
+   };
+   page.emptyPostCategoryNew = categoriesViewMore.length > 0;
   // page
   page.categories = list_cate;
   page.last = count;

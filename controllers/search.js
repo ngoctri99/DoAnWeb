@@ -1,6 +1,8 @@
 var postsModel = require("../models/posts");
 var MiniSearch = require("minisearch");
 var  categoriesModel = require('../models/categories');
+var index = require('./indexs');
+var category = require('./categories');
 var limit = 3;
 var limitPostHot = 5;
 module.exports ={
@@ -29,20 +31,9 @@ module.exports ={
       search = req.query.search;
       let results = miniSearch.search(search);
       var page = [];
-      var index = 0;
-  page.limit = limit+limitPostHot;
+      
   //get category
-  var list_cate = [];
-  var list_cateParent = await categoriesModel.getAllParent();
-  for(var i = 0; i < list_cateParent.length; i++){
-    var list_cateSub = await categoriesModel.getAllSub(list_cateParent[i].category_id);
-      var item = {
-        categoryParent: list_cateParent[i],
-        categoriesSub: list_cateSub,
-        empty: list_cateSub.length !== 0
-    };
-      list_cate.push(item);
-    }
+  var list_cate = await category.loadCategories();
   //get post hot
   var list_post_hot = await postsModel.getHot(limitPostHot);
  
@@ -65,7 +56,6 @@ module.exports ={
   page.posts =[];
      results.slice(start,end).forEach(element => {
     var item = {
-      id:index,
       post:{
       post_id:element.post.post_id,
       post_name: element.post.post_name,
@@ -83,24 +73,19 @@ module.exports ={
       category_name:element.post.category_name
     }
   }
-       page.posts.push(item);
+       page.posts.push(item[0]);
      });
   //list hot post
-  page.posts_hot = [];
-  for(var i = 0; i < list_post_hot.length ; i++){
-    var item = {
-      id: index,
-      postHot:list_post_hot[i]
-    }
-    page.posts_hot.push(item);
-    index++;
-  }
+  page.posts_hot = list_post_hot;
   // page
   page.categories = list_cate;
   page.last = count;
   page.first = 1;
   page.previous = (page.pageCurrent==1)?1:page.pageCurrent--;
   page.next = (page.pageCurrent==count)?count:page.pageCurrent++;
+  var url = "search?search="+req.query.id+"&btn-search=&";
+  var pageCurrent = req.query.page;
+  page = await index.loadPage(list_post,10,list_post_hot,5,list_cate,pageCurrent,url);
   if(results.length == 0){ res.render('notFound',{title:search});
 }else{
   res.render('index', { page: page});

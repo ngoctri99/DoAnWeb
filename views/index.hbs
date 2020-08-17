@@ -39,7 +39,7 @@
                                     <div class="col-md-9">
                                         <div class="decs">
                                             <div class="post_cates">
-                                                 <a style="font-size:0.8em;" href="">[{{category_name}}]</a> -
+                                                 <a style="font-size:0.8em;" href="/category?id={{post_cate}}">[{{category_name}}]</a> -
                                                 <label style="font-size:0.8em;" for="">{{post_browse}} </label>
                                             </div>
                                             <a href="/post/post={{post_id}}">
@@ -56,7 +56,7 @@
                                 {{/each}}
                             </div>
                         </div>
-
+                         {{#if this.page.emptyPostCategoryNew}}
                         <div class="main-cnt" style="margin-top: 10px;">
                             <div class="row">
                                 <div class="col-md-12">
@@ -69,44 +69,35 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="sub-menu-cnt">
-                                    {{#each this.page.categories}}
-                                        {{#if empty}}
-                                             {{#each categoriesSub}}  
-                                                    <a id="{{category_id}}&name={{category_slug}}">{{category_name}}</a>
-                                            {{/each}}
-                                        {{/if}}
-                                    {{/each}}
-                                </div>
-                            </div>
                             <div class="posts">
+                                {{#each this.page.posts_categories}}
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="img">
-                                            <a href="./posts.html "><img src="./public/images/IMG_20200615_185215.jpg " alt=" " /></a>
+                                            <a href="/post/post={{post_id}}"><img src="images/{{post_image}}" alt=" " /></a>
                                         </div>
                                     </div>
                                     <div class="col-md-9">
                                         <div class="decs">
-                                            <a href=" ">
-                                                <p>
-                                                    Tiêu đề nè
-                                                </p>
-                                                <p> mô tả bài viết nè</p>
-                                            </a>
                                             <div class="post_cates">
-                                                <a href="">chuyên đề</a>
-                                                <label for="">Ngày viết</label>
+                                                 <a style="font-size:0.8em;" href="/category?id={{post_cate}}">[{{category_name}}]</a> -
+                                                <label style="font-size:0.8em;" for="">{{post_browse}} </label>
                                             </div>
+                                            <a href="/post/post={{post_id}}">
+                                                <p style="color:#D1090B; font-size:1.4em">
+                                                   {{post_name}} <br>
+                                                </p>
+                                            </a>
+                                            <a href="/post/post={{post_id}}">
+                                            <p>{{post_meta}}</p>
+                                            </a>
                                         </div>
-
                                     </div>
                                 </div>
+                                {{/each}}
                             </div>
-                       
-
-                </div>
+                        </div>
+                        {{/if}}
                     </div>
                     
                     <div class="col-md-4">
@@ -129,7 +120,7 @@
                                     <div class="col-md-9">
                                         <div class="decs">
                                             <div class="post_cates">
-                                                 <a style="font-size:0.8em;" href="">[{{category_name}}]</a>-
+                                                 <a style="font-size:0.8em;" href="/category?id={{post_cate}}">[{{category_name}}]</a>-
                                                 <label style="font-size:0.8em;" for="">{{post_browse}} </label>
                                             </div>
                                             <a href="/post/post={{post_id}}">
@@ -160,7 +151,7 @@
                                 <div class="col-md-9">
                                     <div class="decs">
                                         <div class="post_cates">
-                                                 <a style="font-size:0.8em;" href="">[{{category_name}}]</a>-
+                                                 <a style="font-size:0.8em;" href="/category?id={{post_cate}}">[{{category_name}}]</a>-
                                                 <label style="font-size:0.8em;" for="">{{post_browse}} </label>
                                             </div>
                                             <a href="/post/post={{post_id}}">
